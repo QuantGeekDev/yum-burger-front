@@ -1,7 +1,7 @@
 import "styled-components";
 
 declare module "styled-components" {
-  export interface MainTheme {
+  export interface DefaultTheme {
     colors: {
       primary: string;
       secondary: string;
@@ -11,7 +11,7 @@ declare module "styled-components" {
       error: string;
     };
 
-    font: {
+    fonts: {
       title: string;
       content: string;
       button: string;

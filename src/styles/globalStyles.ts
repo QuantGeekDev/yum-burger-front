@@ -20,8 +20,23 @@ a {
   text-decoration: none;
 }
 
+button {
+  border-radius: none;
+  background-color: transparent;
+}
+
 img {
   max-width: 100%;
+}
+
+html {
+  font-family: ${({ theme }) => theme.font.body};
+}
+
+h1,
+h2,
+h3 {
+  font-family: ${({ theme }) => theme.font.title};
 }
 
 ol, ul {
@@ -31,7 +46,6 @@ ol, ul {
 textarea {
     white-space: revert;
 }
-
 
 `;
 

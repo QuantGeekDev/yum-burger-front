@@ -30,13 +30,13 @@ img {
 }
 
 html {
-  font-family: ${({ theme }) => theme.font.body};
+  font-family: ${({ theme }) => theme.fonts.content};
 }
 
 h1,
 h2,
 h3 {
-  font-family: ${({ theme }) => theme.font.title};
+  font-family: ${({ theme }) => theme.fonts.title};
 }
 
 ol, ul {

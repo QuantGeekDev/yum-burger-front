@@ -1,3 +1,4 @@
+import NavigationBar from "../NavigationBar/NavigationBar";
 import HeaderStyled from "./HeaderStyled";
 
 const Header = (): React.ReactElement => (

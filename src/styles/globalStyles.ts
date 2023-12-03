@@ -18,6 +18,7 @@ body {
 a {
   background-color: none;
   text-decoration: none;
+  color: inherit
 }
 
 button {

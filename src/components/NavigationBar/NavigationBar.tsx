@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
+import NavigationBarStyled from "./NavigationBarStyled";
 
 const NavigationBar = (): React.ReactElement => (
-  <nav className="nav">
+  <NavigationBarStyled className="nav">
     <ul className="nav__list">
       <li>
-        <NavLink className="nav__link" to={"/burgers"}>
+        <NavLink className="nav__link" to={"/home"}>
           Burgers
         </NavLink>
       </li>
@@ -14,7 +15,7 @@ const NavigationBar = (): React.ReactElement => (
         </NavLink>
       </li>
     </ul>
-  </nav>
+  </NavigationBarStyled>
 );
 
 export default NavigationBar;

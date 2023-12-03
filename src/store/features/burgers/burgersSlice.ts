@@ -1,10 +1,14 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { type BurgerStructure } from "./types";
+import { BurgersStateStructure, type BurgerStructure } from "./types";
+
+export const initialBurgersState: BurgersStateStructure = {
+  burgers: [],
+};
 
 const burgersSlice = createSlice({
   name: "burgersState",
 
-  initialState: [],
+  initialState: initialBurgersState,
 
   reducers: {
     loadBurgers: (currentState, action: PayloadAction<BurgerStructure[]>) => ({

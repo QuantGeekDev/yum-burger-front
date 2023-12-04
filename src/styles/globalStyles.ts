@@ -23,6 +23,7 @@ a {
 
 button {
   border-radius: none;
+  box-shadow: none;
   background-color: transparent;
 }
 

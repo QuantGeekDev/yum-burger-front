@@ -1,4 +1,5 @@
 import { BurgerStructure } from "../../store/features/burgers/types";
+import BurgerCardStyled from "./BurgerCardStyled";
 
 interface BurgerCardProps {
   burger: BurgerStructure;
@@ -7,7 +8,7 @@ const BurgerCard = ({
   burger: { name, imageUrl },
 }: BurgerCardProps): React.ReactElement => {
   return (
-    <article>
+    <BurgerCardStyled className="burger">
       <h2 className="burger__title">{name}</h2>
       <img
         className="burger__image"
@@ -16,7 +17,7 @@ const BurgerCard = ({
         width="100"
         src={imageUrl}
       />
-    </article>
+    </BurgerCardStyled>
   );
 };
 

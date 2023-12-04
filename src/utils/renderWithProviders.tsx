@@ -5,17 +5,20 @@ import { BrowserRouter } from "react-router-dom";
 import defaultTheme from "../styles/DefaultTheme";
 import GlobalStyles from "../styles/globalStyles";
 import { store } from "../store";
+import { Store } from "@reduxjs/toolkit";
 
-const renderWithProviders = (child: JSX.Element): RenderResult => {
+const renderWithProviders = (
+  child: JSX.Element,
+  mockStore?: Store,
+): RenderResult => {
   return render(
-    <Provider store={store}>
+    <Provider store={mockStore ?? store}>
       <BrowserRouter>
         <ThemeProvider theme={defaultTheme}>
           <GlobalStyles />
           {child}
         </ThemeProvider>
       </BrowserRouter>
-      ,
     </Provider>,
   );
 };

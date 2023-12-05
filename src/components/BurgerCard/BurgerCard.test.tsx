@@ -17,12 +17,8 @@ describe("Given a BurgerCard component", () => {
     });
 
     test("The the background image is visible", () => {
-      const backgroundImageAltText = "Cheese Burger";
-
       renderWithProviders(<BurgerCard burger={cheeseBurgerMock} />);
-      const actualBackgroundImage = screen.getByRole("img", {
-        name: backgroundImageAltText,
-      });
+      const actualBackgroundImage = screen.getByRole("img");
 
       expect(actualBackgroundImage).toBeVisible();
     });

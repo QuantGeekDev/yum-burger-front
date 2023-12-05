@@ -6,15 +6,13 @@ const BurgersList = (): React.ReactElement => {
   const burgers = useAppSelector(({ burgersState: { burgers } }) => burgers);
 
   return (
-    <>
-      <ul>
-        {burgers.map((burger: BurgerStructure) => (
-          <li key={burger.name}>
-            <BurgerCard burger={burger} />
-          </li>
-        ))}
-      </ul>
-    </>
+    <ul>
+      {burgers.map((burger: BurgerStructure) => (
+        <li key={burger.name}>
+          <BurgerCard burger={burger} />
+        </li>
+      ))}
+    </ul>
   );
 };
 

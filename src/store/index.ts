@@ -1,10 +1,16 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import {
+  configureStore,
+  ThunkAction,
+  Action,
+  combineReducers,
+} from "@reduxjs/toolkit";
 import burgersReducer from "./features/burgers/burgersSlice";
+import uiReducer from "./features/ui/uiSlice";
 
-export const rootReducer = burgersReducer;
+export const rootReducer = combineReducers({ burgersReducer, uiReducer });
 
 export const store = configureStore({
-  reducer: { burgersState: rootReducer },
+  reducer: { rootReducer: rootReducer },
 });
 
 export type AppDispatch = typeof store.dispatch;

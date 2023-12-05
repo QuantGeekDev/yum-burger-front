@@ -10,8 +10,8 @@ const HeaderStyled = styled.header`
 
   .header {
     &__logo {
-      height: 18vw;
-      width: 18vw;
+      height: 58px;
+      width: 57px;
     }
 
     &__title {

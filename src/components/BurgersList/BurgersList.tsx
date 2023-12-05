@@ -3,7 +3,13 @@ import { useAppSelector } from "../../store/hooks";
 import BurgerCard from "../BurgerCard/BurgerCard";
 
 const BurgersList = (): React.ReactElement => {
-  const burgers = useAppSelector(({ burgersState: { burgers } }) => burgers);
+  const burgers = useAppSelector(
+    ({
+      rootReducer: {
+        burgersReducer: { burgers },
+      },
+    }) => burgers,
+  );
 
   return (
     <ul>

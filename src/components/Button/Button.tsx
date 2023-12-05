@@ -14,7 +14,7 @@ const Button = ({
 }: ButtonProps): React.ReactElement => {
   return (
     <ButtonStyled className={className} onClick={actionOnClick}>
-      <img className="button__icon" src={iconUrl} alt={`${text} icon`} />
+      <img className="button__icon" src={iconUrl} alt="" />
       <span className="button__text">{text} </span>
     </ButtonStyled>
   );

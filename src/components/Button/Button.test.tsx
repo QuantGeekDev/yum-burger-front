@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 
 describe("Given a Button component with text 'Test' and a mocked actionOnclick", () => {
   const expectedText = "Test";
-  const expectedRoleName = "Test icon Test";
+  const expectedRoleName = "Test";
   const mockedAction = vitest.fn();
 
   describe("When instanced", () => {

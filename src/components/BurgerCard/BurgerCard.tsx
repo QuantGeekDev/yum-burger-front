@@ -12,7 +12,7 @@ const BurgerCard = ({
       <h2 className="burger__title">{name}</h2>
       <img
         className="burger__image"
-        alt={name}
+        alt=""
         height="100"
         width="100"
         src={imageUrl}

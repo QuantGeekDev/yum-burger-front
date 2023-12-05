@@ -7,12 +7,13 @@ const BurgersList = (): React.ReactElement => {
 
   return (
     <>
-      {burgers.map((burger: BurgerStructure) => (
-        <li key={burger.name}>
-          {" "}
-          <BurgerCard burger={burger} />{" "}
-        </li>
-      ))}
+      <ul>
+        {burgers.map((burger: BurgerStructure) => (
+          <li key={burger.name}>
+            <BurgerCard burger={burger} />
+          </li>
+        ))}
+      </ul>
     </>
   );
 };

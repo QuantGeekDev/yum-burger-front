@@ -24,13 +24,7 @@ const BurgerCardStyled = styled.article`
       border-radius: 15px;
       object-fit: cover;
       pointer-events: none;
-      z-index: -1;
-      -webkit-user-drag: none;
       user-select: none;
-      -moz-user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
     }
   }
 `;

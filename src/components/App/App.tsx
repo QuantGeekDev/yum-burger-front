@@ -10,8 +10,8 @@ const App = (): React.ReactElement => {
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Navigate to={"/home"} />} />
-        <Route path="/home" element={<BurgersPage />} />{" "}
-        <Route path="*" element={<h1> 404 Page Not Found </h1>} />{" "}
+        <Route path="/home" element={<BurgersPage />} />
+        <Route path="*" element={<h1> 404 Page Not Found </h1>} />
       </Routes>
     </>
   );

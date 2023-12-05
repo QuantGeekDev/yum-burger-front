@@ -2,16 +2,20 @@ import { useEffect } from "react";
 import BurgersPageStyled from "./BurgersPageStyled";
 import { useAppDispatch } from "../store/hooks";
 import { loadBurgersActionCreator } from "../store/features/burgers/burgersSlice";
-import { burgersMock } from "../store/features/burgers/mocks/burgersMock";
 import BurgersList from "../components/BurgersList/BurgersList";
+import useApi from "../hooks/useApi";
 
 const BurgersPage = (): React.ReactElement => {
+  const { getBurgers } = useApi();
   const dispatch = useAppDispatch();
-  const loadBurgersAction = loadBurgersActionCreator(burgersMock);
 
   useEffect(() => {
-    dispatch(loadBurgersAction);
-  }, [dispatch, loadBurgersAction]);
+    (async () => {
+      const burgers = await getBurgers();
+      const loadBurgersAction = loadBurgersActionCreator(burgers);
+      dispatch(loadBurgersAction);
+    })();
+  }, [dispatch, getBurgers]);
 
   return (
     <BurgersPageStyled className="burgers-page">

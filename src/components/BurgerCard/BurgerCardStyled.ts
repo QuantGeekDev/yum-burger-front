@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const BurgerCardStyled = styled.article`
   position: relative;
-  box-shadow: 0px 4px 4px 0px #000c;
 
   .burger {
     &__title {
@@ -15,7 +14,7 @@ const BurgerCardStyled = styled.article`
       font-size: 2rem;
       font-weight: 700;
       line-height: normal;
-      text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.75);
+      text-shadow: 0px 2px 4px #000c;
     }
 
     &__image {
@@ -24,13 +23,7 @@ const BurgerCardStyled = styled.article`
       border-radius: 15px;
       object-fit: cover;
       pointer-events: none;
-      z-index: -1;
-      -webkit-user-drag: none;
       user-select: none;
-      -moz-user-select: none;
-      -webkit-user-drag: none;
-      -webkit-user-select: none;
-      -ms-user-select: none;
     }
   }
 `;

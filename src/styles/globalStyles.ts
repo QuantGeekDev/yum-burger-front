@@ -43,6 +43,7 @@ h3 {
 
 ol, ul {
   list-style: none;
+  padding-inline-start: 0;
 }
 
 textarea {

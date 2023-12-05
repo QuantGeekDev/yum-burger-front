@@ -3,12 +3,10 @@ import Header from "../Header/Header";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import BurgersPage from "../../pages/BurgersPage";
 import AppStyled from "./AppStyled";
-import Loading from "../Loading/Loading";
 
 const App = (): React.ReactElement => {
   return (
     <AppStyled>
-      <Loading />
       <Header />
       <NavigationBar />
       <Routes>

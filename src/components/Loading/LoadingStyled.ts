@@ -20,6 +20,15 @@ const LoadingStyled = styled.div`
       font-family: ${({ theme }) => theme.fonts.title};
       font-size: 2rem;
       color: ${({ theme }) => theme.colors.primary};
+      text-transform: uppercase;
+    }
+  }
+
+  @media (prefers-reduced-motion) {
+    .loading {
+      &__spinner {
+        display: none;
+      }
     }
   }
 `;

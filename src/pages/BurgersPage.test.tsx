@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import renderWithProviders from "../utils/renderWithProviders";
+import renderWithProviders from "../testUtils/renderWithProviders";
 import BurgersPage from "./BurgersPage";
 
 describe("Given a BurgersPage component", () => {

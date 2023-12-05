@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import renderWithProviders from "../../utils/renderWithProviders";
+import renderWithProviders from "../../testUtils/renderWithProviders";
 import Loading from "./Loading";
 
 describe("Given a Loading component", () => {

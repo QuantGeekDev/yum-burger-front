@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import { cheeseBurgerMock } from "../../store/features/burgers/mocks/burgersMock";
-import renderWithProviders from "../../utils/renderWithProviders";
+import renderWithProviders from "../../testUtils/renderWithProviders";
 import BurgerCard from "./BurgerCard";
 
 describe("Given a BurgerCard component", () => {

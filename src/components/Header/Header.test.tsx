@@ -1,4 +1,4 @@
-import renderWithProviders from "../../utils/renderWithProviders";
+import renderWithProviders from "../../testUtils/renderWithProviders";
 import Header from "./Header";
 import { screen } from "@testing-library/react";
 

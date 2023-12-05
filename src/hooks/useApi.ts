@@ -24,7 +24,8 @@ const useBurgersApi = () => {
     dispatch(hideLoadingAction);
 
     return burgers;
-  }, [dispatch, showLoadingAction, hideLoadingAction]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch]);
 
   return { getBurgers };
 };

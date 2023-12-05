@@ -4,7 +4,7 @@ import {
   classicBurgerMock,
 } from "../store/features/burgers/mocks/burgersMock";
 import useBurgersApi from "./useApi";
-import { providerWrapper } from "../testUtils/ProviderWrapper";
+import { providerWrapper } from "../testUtils/providerWrapper";
 
 describe("Given a useApi hook's loadBurgers method", () => {
   describe("When it is called with a request for burgers", () => {

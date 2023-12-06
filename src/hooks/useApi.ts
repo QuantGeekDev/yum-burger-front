@@ -6,6 +6,7 @@ import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
 } from "../store/features/ui/uiSlice";
+import { toast } from "react-toastify";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
@@ -16,14 +17,19 @@ const useBurgersApi = () => {
 
   const getBurgers = useCallback(async (): Promise<BurgerStructure[]> => {
     dispatch(showLoadingAction);
+    try {
+      const {
+        data: { burgers },
+      } = await axios.get("/burgers");
 
-    const {
-      data: { burgers },
-    } = await axios.get("/burgers");
+      dispatch(hideLoadingAction);
 
-    dispatch(hideLoadingAction);
-
-    return burgers;
+      return burgers;
+    } catch (error) {
+      dispatch(hideLoadingAction);
+      toast.error("Error loading burgers!");
+      return [];
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 

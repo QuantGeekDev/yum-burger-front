@@ -3,10 +3,12 @@ import Header from "../Header/Header";
 import NavigationBar from "../NavigationBar/NavigationBar";
 import BurgersPage from "../../pages/BurgersPage";
 import AppStyled from "./AppStyled";
+import { ToastContainer } from "react-toastify";
 
 const App = (): React.ReactElement => {
   return (
     <AppStyled>
+      <ToastContainer position="top-right" />
       <Header />
       <NavigationBar />
       <Routes>

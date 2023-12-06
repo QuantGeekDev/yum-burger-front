@@ -6,6 +6,7 @@ import defaultTheme from "../styles/DefaultTheme";
 import GlobalStyles from "../styles/globalStyles";
 import { store } from "../store";
 import { Store } from "@reduxjs/toolkit";
+import { ToastContainer } from "react-toastify";
 
 const renderWithProviders = (
   child: JSX.Element,
@@ -16,6 +17,7 @@ const renderWithProviders = (
       <BrowserRouter>
         <ThemeProvider theme={defaultTheme}>
           <GlobalStyles />
+          <ToastContainer />
           {child}
         </ThemeProvider>
       </BrowserRouter>

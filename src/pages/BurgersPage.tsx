@@ -5,6 +5,11 @@ import { loadBurgersActionCreator } from "../store/features/burgers/burgersSlice
 import BurgersList from "../components/BurgersList/BurgersList";
 import useBurgersApi from "../hooks/useApi";
 import Loading from "../components/Loading/Loading";
+import { toast } from "react-toastify";
+import {
+  hideLoadingActionCreator,
+  showLoadingActionCreator,
+} from "../store/features/ui/uiSlice";
 
 const BurgersPage = (): React.ReactElement => {
   const { getBurgers } = useBurgersApi();
@@ -20,9 +25,18 @@ const BurgersPage = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
-      const burgers = await getBurgers();
-      const getBurgersAction = loadBurgersActionCreator(burgers);
-      dispatch(getBurgersAction);
+      try {
+        const showLoadingAction = showLoadingActionCreator();
+        dispatch(showLoadingAction);
+        const burgers = await getBurgers();
+        const getBurgersAction = loadBurgersActionCreator(burgers);
+        dispatch(getBurgersAction);
+      } catch (error) {
+        const toastErrorMessage = "Error loading burgers";
+        toast.error(toastErrorMessage);
+        const hideLoadingAction = hideLoadingActionCreator();
+        dispatch(hideLoadingAction);
+      }
     })();
   }, [dispatch, getBurgers]);
 

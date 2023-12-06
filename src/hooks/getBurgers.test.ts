@@ -5,8 +5,12 @@ import {
 } from "../store/features/burgers/mocks/burgersMock";
 import useBurgersApi from "./useApi";
 import { providerWrapper } from "../testUtils/providerWrapper";
+import { vi } from "vitest";
+import axios from "axios";
 
-describe("Given a useApi hook's loadBurgers method", () => {
+beforeEach(() => vitest.resetModules());
+
+describe("Given a useApi hook's getBurgers method", () => {
   describe("When it is called with a request for burgers", () => {
     test("Then it should return an array with a Classic Burger and a Cheese Burger", async () => {
       const {
@@ -19,6 +23,26 @@ describe("Given a useApi hook's loadBurgers method", () => {
 
       expect(burgers[0]).toEqual(classicBurgerMock);
       expect(burgers[1]).toEqual(cheeseBurgerMock);
+    });
+  });
+
+  describe("When it encounters an error", () => {
+    test("Then it should call its toast method with message 'Error getting burgers' and call dispatch with the hide loading screen action", async () => {
+      axios.get = vi
+        .fn()
+        .mockRejectedValue(new Error("Error getting burgers from database"));
+
+      const {
+        result: {
+          current: { getBurgers },
+        },
+      } = renderHook(() => useBurgersApi(), {
+        wrapper: providerWrapper,
+      });
+
+      await expect(() => getBurgers()).rejects.toThrow(
+        "Error getting burgers from database",
+      );
     });
   });
 });

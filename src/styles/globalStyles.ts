@@ -5,10 +5,16 @@ const GlobalStyles = createGlobalStyle`
   box-sizing: border-box;
 }
 
+  :root {
+--toastify-color-error: ${({ theme }) => theme.colors.error};
+--toastify-color-success: ${({ theme }) => theme.colors.success};
+  }
+
 html {
   line-height: 1.15; 
   -webkit-text-size-adjust: 100%; 
 }
+
 
 body {
   padding: 0;

@@ -1,6 +1,6 @@
 import { BurgerStructure } from "../../store/features/burgers/types";
 import BurgerCardStyled from "./BurgerCardStyled";
-
+import Button from "../Button/Button";
 interface BurgerCardProps {
   burger: BurgerStructure;
 }
@@ -16,6 +16,13 @@ const BurgerCard = ({
         height="100"
         width="100"
         src={imageUrl}
+      />
+      <Button
+        className="burger__delete-button button--transparent"
+        text="Delete"
+        actionOnClick={() => {
+          console.log("Hello world!");
+        }}
       />
     </BurgerCardStyled>
   );

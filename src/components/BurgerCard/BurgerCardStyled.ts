@@ -25,6 +25,15 @@ const BurgerCardStyled = styled.article`
       pointer-events: none;
       user-select: none;
     }
+
+    &__delete-button {
+      position: absolute;
+      right: 5px;
+      top: 8px;
+      font-family: ${({ theme }) => theme.fonts.title};
+      font-size: 1rem;
+      font-weight: 800;
+    }
   }
 `;
 

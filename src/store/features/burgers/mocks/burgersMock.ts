@@ -1,6 +1,7 @@
 import { type BurgerStructure } from "../types";
 
 export const classicBurgerMock: BurgerStructure = {
+  _id: "6567d60e9fbd027bb1696969",
   name: "Classic Burger",
   price: 5,
   isOrdered: false,
@@ -11,6 +12,7 @@ export const classicBurgerMock: BurgerStructure = {
 };
 
 export const cheeseBurgerMock: BurgerStructure = {
+  _id: "6567d60e9fbd027bb1d9d722",
   name: "Cheese Burger",
   price: 6,
   isOrdered: false,
@@ -21,6 +23,7 @@ export const cheeseBurgerMock: BurgerStructure = {
 };
 
 export const veganBurgerMock: BurgerStructure = {
+  _id: "6567d60e9fbd027bb1d9d110",
   name: "Vegan Burger",
   price: 11,
   isOrdered: false,

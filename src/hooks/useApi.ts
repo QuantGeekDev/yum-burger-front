@@ -1,13 +1,10 @@
 import axios from "axios";
 import { BurgerStructure } from "../store/features/burgers/types";
 import { useCallback } from "react";
-import { useAppDispatch } from "../store/hooks";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 const useBurgersApi = () => {
-  const dispatch = useAppDispatch();
-
   const getBurgers = useCallback(async (): Promise<BurgerStructure[]> => {
     try {
       const {
@@ -19,18 +16,21 @@ const useBurgersApi = () => {
       throw new Error("Error getting burgers from database");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch]);
-
-  const deleteBurgers = useCallback(async (): Promise<BurgerStructure> => {
-    try {
-      const {
-        data: { burger },
-      } = await axios.delete("/burgers:id");
-      return burger;
-    } catch (error) {
-      throw new Error("Error deleting burger from database");
-    }
   }, []);
+
+  const deleteBurgers = useCallback(
+    async (id: string): Promise<BurgerStructure> => {
+      try {
+        const {
+          data: { burger },
+        } = await axios.delete(`burgers/${id}`);
+        return burger;
+      } catch (error) {
+        throw new Error("Error deleting burger from database");
+      }
+    },
+    [],
+  );
 
   return { getBurgers, deleteBurgers };
 };

@@ -2,7 +2,6 @@ import { BurgerStructure } from "../../store/features/burgers/types";
 import BurgerCardStyled from "./BurgerCardStyled";
 import Button from "../Button/Button";
 import { useAppDispatch } from "../../store/hooks";
-import { showLoadingActionCreator } from "../../store/features/ui/uiSlice";
 import { toast } from "react-toastify";
 import { deleteBurgerActionCreator } from "../../store/features/burgers/burgersSlice";
 interface BurgerCardProps {

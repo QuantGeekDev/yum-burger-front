@@ -4,6 +4,10 @@ import BurgersPage from "./BurgersPage";
 import { server } from "../mocks/node";
 import { errorHandlers } from "../mocks/errorHandlers";
 
+beforeEach(() => {
+  server.resetHandlers();
+});
+
 describe("Given a BurgersPage component", () => {
   describe("When it is rendered", () => {
     test("Then the title 'Our Burgers' should be visible", () => {

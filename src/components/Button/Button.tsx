@@ -4,7 +4,7 @@ interface ButtonProps {
   className: string;
   text: string;
   actionOnClick: () => void;
-  iconUrl: string;
+  iconUrl?: string;
 }
 const Button = ({
   className,
@@ -14,7 +14,15 @@ const Button = ({
 }: ButtonProps): React.ReactElement => {
   return (
     <ButtonStyled className={className} onClick={actionOnClick}>
-      <img className="button__icon" src={iconUrl} alt="" />
+      {iconUrl && (
+        <img
+          className="button__icon"
+          src={iconUrl}
+          alt=""
+          width="50"
+          height="50"
+        />
+      )}
       <span className="button__text">{text} </span>
     </ButtonStyled>
   );

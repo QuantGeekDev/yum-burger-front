@@ -1,9 +1,9 @@
 import burgersReducer, {
   loadBurgersActionCreator,
   initialBurgersState,
-} from "./burgersSlice";
-import { cheeseBurgerMock, classicBurgerMock } from "./mocks/burgersMock";
-import { BurgersStateStructure } from "./types";
+} from "../burgersSlice";
+import { cheeseBurgerMock, classicBurgerMock } from "../mocks/burgersMock";
+import { BurgersStateStructure } from "../types";
 
 describe("Given a loadBurgers reducer", () => {
   describe("When it receives an initial state and a request to load Classic Burger and Cheese Burger", () => {

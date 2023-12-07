@@ -15,9 +15,21 @@ const burgersSlice = createSlice({
       ...currentState,
       burgers: action.payload,
     }),
+    deleteBurger: (currentState, action: PayloadAction<string>) => {
+      const burgerId = action.payload;
+      return {
+        ...currentState,
+        burgers: currentState.burgers.map((burger) => {
+          return burger._id !== burgerId ? burger : ({} as BurgerStructure);
+        }),
+      };
+    },
   },
 });
 
 export default burgersSlice.reducer;
 
-export const { loadBurgers: loadBurgersActionCreator } = burgersSlice.actions;
+export const {
+  loadBurgers: loadBurgersActionCreator,
+  deleteBurger: deleteBurgerActionCreator,
+} = burgersSlice.actions;

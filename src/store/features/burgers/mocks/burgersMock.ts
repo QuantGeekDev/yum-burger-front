@@ -34,3 +34,5 @@ export const veganBurgerMock: BurgerStructure = {
 };
 
 export const burgersMock = [classicBurgerMock, cheeseBurgerMock];
+
+export const burgersMockWithoutClassicBurger = [cheeseBurgerMock];

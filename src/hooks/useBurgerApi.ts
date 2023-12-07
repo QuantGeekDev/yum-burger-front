@@ -15,15 +15,14 @@ const useBurgersApi = () => {
     } catch (error) {
       throw new Error("Error getting burgers from database");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const deleteBurgers = useCallback(
+  const deleteBurger = useCallback(
     async (id: string): Promise<BurgerStructure> => {
       try {
         const {
           data: { burger },
-        } = await axios.delete(`burgers/${id}`);
+        } = await axios.delete(`/burgers/${id}`);
         return burger;
       } catch (error) {
         throw new Error("Error deleting burger from database");
@@ -32,7 +31,7 @@ const useBurgersApi = () => {
     [],
   );
 
-  return { getBurgers, deleteBurgers };
+  return { getBurgers, deleteBurger };
 };
 
 export default useBurgersApi;

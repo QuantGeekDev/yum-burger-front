@@ -2,9 +2,9 @@ import { renderHook } from "@testing-library/react";
 import {
   cheeseBurgerMock,
   classicBurgerMock,
-} from "../store/features/burgers/mocks/burgersMock";
-import useBurgersApi from "./useApi";
-import { providerWrapper } from "../testUtils/providerWrapper";
+} from "../../store/features/burgers/mocks/burgersMock";
+import useBurgersApi from "../useBurgerApi";
+import { providerWrapper } from "../../testUtils/providerWrapper";
 import { vi } from "vitest";
 import axios from "axios";
 

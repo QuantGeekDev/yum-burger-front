@@ -15,13 +15,16 @@ const burgersSlice = createSlice({
       ...currentState,
       burgers: action.payload,
     }),
-    deleteBurger: (currentState, action: PayloadAction<string>) => {
+    deleteBurger: (
+      currentState,
+      action: PayloadAction<string>,
+    ): BurgersStateStructure => {
       const burgerId = action.payload;
       return {
         ...currentState,
-        burgers: currentState.burgers.map((burger) => {
-          return burger._id !== burgerId ? burger : ({} as BurgerStructure);
-        }),
+        burgers: currentState.burgers.filter(
+          (burger) => burgerId != burger._id,
+        ),
       };
     },
   },

@@ -4,6 +4,10 @@ import { classicBurgerMock } from "../../store/features/burgers/mocks/burgersMoc
 import { errorHandlers } from "../../mocks/errorHandlers";
 import { server } from "../../mocks/node";
 
+beforeEach(() => {
+  server.resetHandlers();
+});
+
 describe("Given a useApi's deleteBurgers method", () => {
   const {
     result: {

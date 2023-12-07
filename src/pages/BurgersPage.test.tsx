@@ -1,9 +1,12 @@
 import { screen, waitFor, within } from "@testing-library/react";
-import renderWithProviders from "../testUtils/renderWithProviders";
+import renderWithProviders, {
+  mockStore,
+} from "../testUtils/renderWithProviders";
 import BurgersPage from "./BurgersPage";
 import { server } from "../mocks/node";
 import { errorHandlers } from "../mocks/errorHandlers";
 import userEvent from "@testing-library/user-event";
+import { deleteBurgerErrorHandlers } from "../mocks/deleteBurgerHandler";
 
 beforeEach(() => {
   server.resetHandlers();
@@ -43,11 +46,9 @@ describe("Given a BurgersPage component", () => {
 
         renderWithProviders(<BurgersPage />);
 
-        const actualBurgers = screen.getAllByRole("article", {
+        const actualClassicBurger = screen.getByRole("article", {
           name: "Classic Burger",
         });
-
-        const actualClassicBurger = actualBurgers[0];
 
         const deleteButtonForClassicBurger = within(
           actualClassicBurger,
@@ -64,6 +65,36 @@ describe("Given a BurgersPage component", () => {
           expect(actualClassicBurger).not.toBeVisible();
 
           expect(toastMessage).toBeInTheDocument();
+        });
+      });
+
+      describe("When the user clicks on Classic Burger's delete button and it encounters an error", () => {
+        test("Then it should show the toast message 'Error deleting burger, please try again later' ", async () => {
+          server.use(...deleteBurgerErrorHandlers);
+
+          const expectedToastMessage =
+            "Error deleting burger, please try again later";
+          const classicBurgerName = "Classic Burger";
+          const deleteButtonText = "Delete";
+          const user = userEvent.setup();
+
+          renderWithProviders(<BurgersPage />, mockStore);
+
+          const actualClassicBurger = screen.getByRole("article", {
+            name: classicBurgerName,
+          });
+          const classicBurgerDeleteButton = within(
+            actualClassicBurger,
+          ).getByRole("button", {
+            name: deleteButtonText,
+          });
+
+          await user.click(classicBurgerDeleteButton);
+
+          await waitFor(async () => {
+            const toastMessage = screen.getByText(expectedToastMessage);
+            expect(toastMessage).toBeVisible();
+          });
         });
       });
     });

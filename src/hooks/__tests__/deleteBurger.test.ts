@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react";
-import useBurgersApi from "../useApi";
+import useBurgersApi from "../useBurgerApi";
 import { classicBurgerMock } from "../../store/features/burgers/mocks/burgersMock";
 import { errorHandlers } from "../../mocks/errorHandlers";
 import { server } from "../../mocks/node";
@@ -8,10 +8,10 @@ beforeEach(() => {
   server.resetHandlers();
 });
 
-describe("Given a useApi's deleteBurgers method", () => {
+describe("Given a useApi's deleteBurger method", () => {
   const {
     result: {
-      current: { deleteBurgers },
+      current: { deleteBurger },
     },
   } = renderHook(useBurgersApi);
 
@@ -19,7 +19,7 @@ describe("Given a useApi's deleteBurgers method", () => {
 
   describe("When it receives a request to delete a Classic Burger from the API", () => {
     test("Then it should return a Classic Burger", async () => {
-      const { name, _id } = await deleteBurgers(classicBurgerId);
+      const { name, _id } = await deleteBurger(classicBurgerId);
 
       expect(name).toEqual(classicBurgerMock.name);
       expect(_id).toEqual(classicBurgerMock._id);
@@ -31,7 +31,7 @@ describe("Given a useApi's deleteBurgers method", () => {
 
         server.use(...errorHandlers);
 
-        await expect(() => deleteBurgers(classicBurgerId)).rejects.toThrow(
+        await expect(() => deleteBurger(classicBurgerId)).rejects.toThrow(
           expectedErrorMessage,
         );
       });

@@ -4,9 +4,17 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import defaultTheme from "../styles/DefaultTheme";
 import GlobalStyles from "../styles/globalStyles";
-import { store } from "../store";
-import { Store } from "@reduxjs/toolkit";
+import { rootReducer, store } from "../store";
+import { Store, configureStore } from "@reduxjs/toolkit";
 import { ToastContainer } from "react-toastify";
+import { burgersMock } from "../store/features/burgers/mocks/burgersMock";
+
+export const mockStore = configureStore({
+  reducer: { rootReducer: rootReducer },
+  preloadedState: {
+    rootReducer: { burgersReducer: { burgers: burgersMock } },
+  },
+});
 
 const renderWithProviders = (
   child: JSX.Element,

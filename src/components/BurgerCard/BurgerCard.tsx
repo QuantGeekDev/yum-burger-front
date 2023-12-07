@@ -15,7 +15,7 @@ const BurgerCard = ({
   const dispatchDelete = () => dispatch(deleteBurgerAction);
 
   return (
-    <BurgerCardStyled className="burger">
+    <BurgerCardStyled className="burger" aria-label={name}>
       <h2 className="burger__title">{name}</h2>
       <img
         className="burger__image"
@@ -30,9 +30,14 @@ const BurgerCard = ({
         actionOnClick={() => {
           try {
             dispatchDelete();
-            toast.success("Burger deleted succesfully!");
+            const toastSuccessMessage = "Burger deleted succesfully";
+
+            toast.success(toastSuccessMessage);
           } catch (error) {
-            toast.error("Error deleting burger, please try again later");
+            const toastErrorMessage =
+              "Error deleting burger, please try again later";
+
+            toast.error(toastErrorMessage);
           }
         }}
       />

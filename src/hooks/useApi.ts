@@ -21,7 +21,18 @@ const useBurgersApi = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
-  return { getBurgers };
+  const deleteBurgers = useCallback(async (): Promise<BurgerStructure> => {
+    try {
+      const {
+        data: { burger },
+      } = await axios.delete("/burgers:id");
+      return burger;
+    } catch (error) {
+      throw new Error("Error deleting burger from database");
+    }
+  }, []);
+
+  return { getBurgers, deleteBurgers };
 };
 
 export default useBurgersApi;

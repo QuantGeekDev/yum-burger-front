@@ -25,16 +25,20 @@ const BurgersPage = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
+      const hideLoadingAction = hideLoadingActionCreator();
+
       try {
         const showLoadingAction = showLoadingActionCreator();
         dispatch(showLoadingAction);
+
         const burgers = await getBurgers();
+
         const getBurgersAction = loadBurgersActionCreator(burgers);
         dispatch(getBurgersAction);
+        dispatch(hideLoadingAction);
       } catch (error) {
         const toastErrorMessage = "Error loading burgers";
         toast.error(toastErrorMessage);
-        const hideLoadingAction = hideLoadingActionCreator();
         dispatch(hideLoadingAction);
       }
     })();

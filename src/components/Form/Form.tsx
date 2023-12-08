@@ -1,9 +1,9 @@
 import Button from "../Button/Button";
 import FormStyled from "./FormStyled";
 interface FormProps {
-  actionOnClick: (event: React.MouseEvent) => void;
+  buttonText: string;
 }
-const Form = ({ actionOnClick }: FormProps): React.ReactElement => {
+const Form = ({ buttonText }: FormProps): React.ReactElement => {
   return (
     <FormStyled className="form" autoComplete="off">
       <div className="form-controls">
@@ -46,8 +46,8 @@ const Form = ({ actionOnClick }: FormProps): React.ReactElement => {
 
       <Button
         className="button--transparent form-controls__submit"
-        text="Submit"
-        actionOnClick={actionOnClick}
+        text={buttonText}
+        actionOnClick={() => {}}
       />
     </FormStyled>
   );

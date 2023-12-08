@@ -51,6 +51,7 @@ export const smartRenderWithProviders = (
     );
 
   const smartRenderWithProviderResponse = {
+    render: () => smartRender(),
     getByText: (text: string) => {
       smartRender();
       return screen.getByText(text);

@@ -1,7 +1,4 @@
-import { screen } from "@testing-library/react";
-import renderWithProviders, {
-  smartRenderWithProviders,
-} from "../../testUtils/renderWithProviders";
+import { smartRenderWithProviders } from "../../testUtils/renderWithProviders";
 import Form from "./Form";
 
 describe("Given a Form component", () => {
@@ -9,7 +6,13 @@ describe("Given a Form component", () => {
     test("Then the 'Name' input is visible", () => {
       const nameLabel = "Name";
 
-      const { getByRole } = smartRenderWithProviders(<Form />);
+      const { getByRole } = smartRenderWithProviders(
+        <Form
+          actionOnClick={(event: React.MouseEvent) => {
+            event.preventDefault();
+          }}
+        />,
+      );
 
       const actualNameLabel = getByRole("textbox", { name: nameLabel });
 

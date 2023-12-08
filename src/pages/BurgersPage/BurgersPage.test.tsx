@@ -1,12 +1,12 @@
 import { screen, waitFor, within } from "@testing-library/react";
 import renderWithProviders, {
   mockStore,
-} from "../testUtils/renderWithProviders";
+} from "../../testUtils/renderWithProviders";
 import BurgersPage from "./BurgersPage";
-import { server } from "../mocks/node";
-import { errorHandlers } from "../mocks/errorHandlers";
+import { server } from "../../mocks/node";
+import { errorHandlers } from "../../mocks/errorHandlers";
 import userEvent from "@testing-library/user-event";
-import { deleteBurgerErrorHandlers } from "../mocks/deleteBurgerHandler";
+import { deleteBurgerErrorHandlers } from "../../mocks/deleteBurgerHandler";
 
 beforeEach(() => {
   server.resetHandlers();

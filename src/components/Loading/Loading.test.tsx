@@ -1,5 +1,4 @@
-import { screen } from "@testing-library/react";
-import renderWithProviders from "../../testUtils/renderWithProviders";
+import { smartRenderWithProviders } from "../../testUtils/renderWithProviders";
 import Loading from "./Loading";
 
 describe("Given a Loading component", () => {
@@ -7,8 +6,8 @@ describe("Given a Loading component", () => {
     test("Then the loading message 'Loading' should be visible", () => {
       const expectedLoadingMessage = "Loading ...";
 
-      renderWithProviders(<Loading />);
-      const actualLoading = screen.getByText(expectedLoadingMessage);
+      const { getByText } = smartRenderWithProviders(<Loading />);
+      const actualLoading = getByText(expectedLoadingMessage);
 
       expect(actualLoading).toBeVisible();
     });

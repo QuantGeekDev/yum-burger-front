@@ -1,7 +1,7 @@
 import Button from "../Button/Button";
 import FormStyled from "./FormStyled";
 interface FormProps {
-  actionOnClick: (event: Event) => void;
+  actionOnClick: (event: React.MouseEvent) => void;
 }
 const Form = ({ actionOnClick }: FormProps): React.ReactElement => {
   return (

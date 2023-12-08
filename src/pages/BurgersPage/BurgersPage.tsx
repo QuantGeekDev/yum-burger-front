@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import BurgersPageStyled from "./BurgersPageStyled";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { loadBurgersActionCreator } from "../store/features/burgers/burgersSlice";
-import BurgersList from "../components/BurgersList/BurgersList";
-import useBurgersApi from "../hooks/useBurgerApi";
-import Loading from "../components/Loading/Loading";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { loadBurgersActionCreator } from "../../store/features/burgers/burgersSlice";
+import BurgersList from "../../components/BurgersList/BurgersList";
+import useBurgersApi from "../../hooks/useBurgerApi";
+import Loading from "../../components/Loading/Loading";
 import { toast } from "react-toastify";
 import {
   hideLoadingActionCreator,
   showLoadingActionCreator,
-} from "../store/features/ui/uiSlice";
+} from "../../store/features/ui/uiSlice";
 
 const BurgersPage = (): React.ReactElement => {
   const { getBurgers } = useBurgersApi();

@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Header from "../Header/Header";
 import NavigationBar from "../NavigationBar/NavigationBar";
-import BurgersPage from "../../pages/BurgersPage";
+import BurgersPage from "../../pages/BurgersPage/BurgersPage";
 import AppStyled from "./AppStyled";
 import { ToastContainer } from "react-toastify";
 

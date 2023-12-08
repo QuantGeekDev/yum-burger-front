@@ -1,7 +1,9 @@
 import Button from "../Button/Button";
 import FormStyled from "./FormStyled";
-
-const Form = (): React.ReactElement => {
+interface FormProps {
+  actionOnClick: (event: Event) => void;
+}
+const Form = ({ actionOnClick }: FormProps): React.ReactElement => {
   return (
     <FormStyled className="form" autoComplete="off">
       <div className="form-controls">
@@ -37,17 +39,15 @@ const Form = (): React.ReactElement => {
         </div>
 
         <div className="form-controls__isVegan">
-          <label htmlFor="name">Is it vegan?</label>
-          <input id="name" type="checkbox" />
+          <label htmlFor="isVegan">Is it vegan?</label>
+          <input id="isVegan" type="checkbox" />
         </div>
       </div>
 
       <Button
         className="button--transparent form-controls__submit"
         text="Submit"
-        actionOnClick={(e: Event) => {
-          e.preventDefault();
-        }}
+        actionOnClick={actionOnClick}
       />
     </FormStyled>
   );

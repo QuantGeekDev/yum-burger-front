@@ -3,7 +3,7 @@ import ButtonStyled from "./ButtonStyled";
 interface ButtonProps {
   className: string;
   text: string;
-  actionOnClick: () => void;
+  actionOnClick: (e: Event) => void;
   iconUrl?: string;
 }
 const Button = ({

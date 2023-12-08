@@ -45,7 +45,7 @@ const Form = (): React.ReactElement => {
       <Button
         className="button--transparent form-controls__submit"
         text="Submit"
-        actionOnClick={() => (e: Event) => {
+        actionOnClick={(e: Event) => {
           e.preventDefault();
         }}
       />

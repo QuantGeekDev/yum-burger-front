@@ -4,8 +4,9 @@ import FormStyled from "./FormStyled";
 import { BurgerStructure } from "../../store/features/burgers/types";
 interface FormProps {
   buttonText: string;
+  onSubmit: (newBurger: BurgerStructure) => void;
 }
-const Form = ({ buttonText }: FormProps): React.ReactElement => {
+const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
   const initialBurgerFormState: BurgerStructure = {
     name: "",
     imageUrl: "",
@@ -19,11 +20,6 @@ const Form = ({ buttonText }: FormProps): React.ReactElement => {
   const [burgerState, setBurgerState] = useState<BurgerStructure>(
     initialBurgerFormState,
   );
-
-  const onSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log(burgerState);
-  };
 
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -125,8 +121,8 @@ const Form = ({ buttonText }: FormProps): React.ReactElement => {
       <Button
         className="button--transparent form-controls__submit"
         text={buttonText}
-        actionOnClick={(event) => {
-          onSubmit(event);
+        actionOnClick={() => {
+          onSubmit(burgerState);
         }}
       />
     </FormStyled>

@@ -1,5 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { BurgersStateStructure, type MongooseBurgerStructure } from "./types";
+import {
+  BurgerStructure,
+  BurgersStateStructure,
+  type MongooseBurgerStructure,
+} from "./types";
 
 export const initialBurgersState: BurgersStateStructure = {
   burgers: [],
@@ -30,6 +34,16 @@ const burgersSlice = createSlice({
         ),
       };
     },
+    addBurger: (
+      currentState,
+      action: PayloadAction<BurgerStructure>,
+    ): BurgersStateStructure => {
+      const newBurger = action.payload;
+      return {
+        ...currentState,
+        burgers: [...currentState.burgers, newBurger],
+      };
+    },
   },
 });
 
@@ -38,4 +52,5 @@ export default burgersSlice.reducer;
 export const {
   loadBurgers: loadBurgersActionCreator,
   deleteBurger: deleteBurgerActionCreator,
+  addBurger: addBurgerActionCreator,
 } = burgersSlice.actions;

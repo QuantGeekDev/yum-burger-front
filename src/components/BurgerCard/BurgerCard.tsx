@@ -1,4 +1,4 @@
-import { BurgerStructure } from "../../store/features/burgers/types";
+import { MongooseBurgerStructure } from "../../store/features/burgers/types";
 import BurgerCardStyled from "./BurgerCardStyled";
 import Button from "../Button/Button";
 import { useAppDispatch } from "../../store/hooks";
@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { deleteBurgerActionCreator } from "../../store/features/burgers/burgersSlice";
 import useBurgersApi from "../../hooks/useBurgerApi";
 interface BurgerCardProps {
-  burger: BurgerStructure;
+  burger: MongooseBurgerStructure;
 }
 const BurgerCard = ({
   burger: { name, imageUrl, _id },

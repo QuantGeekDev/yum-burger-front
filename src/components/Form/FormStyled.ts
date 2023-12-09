@@ -27,6 +27,7 @@ const FormStyled = styled.form`
     }
 
     &__name,
+    &__ingredients,
     &__image-url,
     &__price,
     &__calories {

@@ -1,4 +1,4 @@
-import { BurgerStructure } from "../../store/features/burgers/types";
+import { MongooseBurgerStructure } from "../../store/features/burgers/types";
 import { useAppSelector } from "../../store/hooks";
 import BurgerCard from "../BurgerCard/BurgerCard";
 
@@ -13,7 +13,7 @@ const BurgersList = (): React.ReactElement => {
 
   return (
     <ul>
-      {burgers.map((burger: BurgerStructure) => (
+      {burgers.map((burger: MongooseBurgerStructure) => (
         <li key={burger.name}>
           <BurgerCard burger={burger} />
         </li>

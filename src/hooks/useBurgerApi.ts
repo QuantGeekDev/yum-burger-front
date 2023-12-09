@@ -1,11 +1,13 @@
 import axios from "axios";
-import { BurgerStructure } from "../store/features/burgers/types";
+import { MongooseBurgerStructure } from "../store/features/burgers/types";
 import { useCallback } from "react";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 const useBurgersApi = () => {
-  const getBurgers = useCallback(async (): Promise<BurgerStructure[]> => {
+  const getBurgers = useCallback(async (): Promise<
+    MongooseBurgerStructure[]
+  > => {
     try {
       const {
         data: { burgers },
@@ -18,7 +20,7 @@ const useBurgersApi = () => {
   }, []);
 
   const deleteBurger = useCallback(
-    async (id: string): Promise<BurgerStructure> => {
+    async (id: string): Promise<MongooseBurgerStructure> => {
       try {
         const {
           data: { burger },

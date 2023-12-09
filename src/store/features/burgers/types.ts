@@ -1,8 +1,9 @@
 export interface BurgerStructure {
+  _id?: string;
   name: string;
   price: number;
   imageUrl: string;
-  ingredients: string[];
+  ingredients: string;
   isOrdered?: boolean;
   hasGluten: boolean;
   isVegan: boolean;
@@ -13,5 +14,5 @@ export interface MongooseBurgerStructure extends BurgerStructure {
 }
 
 export interface BurgersStateStructure {
-  burgers: MongooseBurgerStructure[];
+  burgers: BurgerStructure[];
 }

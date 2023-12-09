@@ -3,9 +3,11 @@ import { BurgerStructure } from "../../store/features/burgers/types";
 import AddBurgerPageStyled from "./AddBurgerPageStyled";
 
 const AddBurgerPage = (): React.ReactElement => {
-  const onSubmit = (_burger: BurgerStructure) => {
+  const onSubmit = (burger: BurgerStructure) => {
     event?.preventDefault();
+    console.log(burger);
   };
+
   return (
     <AddBurgerPageStyled className="add-burger-page">
       <h1 className="add-burger-page__title">Add Burger</h1>

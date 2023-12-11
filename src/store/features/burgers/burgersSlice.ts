@@ -40,6 +40,15 @@ const burgersSlice = createSlice({
         burgers: [...currentState.burgers, newBurger],
       };
     },
+    getBurgerById: (
+      currentState,
+      action: PayloadAction<string>,
+    ): BurgersStateStructure => {
+      const requestedBurger = currentState.burgers.filter((burger) => {
+        return burger._id === action.payload;
+      });
+      return { ...currentState, burgers: [requestedBurger[0]] };
+    },
   },
 });
 
@@ -49,4 +58,5 @@ export const {
   loadBurgers: loadBurgersActionCreator,
   deleteBurger: deleteBurgerActionCreator,
   addBurger: addBurgerActionCreator,
+  getBurgerById: getBurgerByIdActionCreator,
 } = burgersSlice.actions;

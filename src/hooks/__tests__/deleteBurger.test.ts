@@ -26,8 +26,8 @@ describe("Given a useApi's deleteBurger method", () => {
     });
 
     describe("When it encounters an error while executing a request", () => {
-      test("Then it should throw a new error 'Error deleting burger from database' ", async () => {
-        const expectedErrorMessage = "Error deleting burger from database";
+      test("Then it should throw a new error 'Error deleting burger from API' ", async () => {
+        const expectedErrorMessage = "Error deleting burger from API";
 
         server.use(...errorHandlers);
 

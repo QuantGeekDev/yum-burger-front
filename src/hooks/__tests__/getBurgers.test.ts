@@ -28,9 +28,10 @@ describe("Given a useApi hook's getBurgers method", () => {
 
   describe("When it encounters an error", () => {
     test("Then it should call its toast method with message 'Error getting burgers' and call dispatch with the hide loading screen action", async () => {
+      const expectedErrorMessage = "Error getting burgers from API";
       axios.get = vi
         .fn()
-        .mockRejectedValue(new Error("Error getting burgers from database"));
+        .mockRejectedValue(new Error("Error getting burgers from API"));
 
       const {
         result: {
@@ -40,9 +41,7 @@ describe("Given a useApi hook's getBurgers method", () => {
         wrapper: providerWrapper,
       });
 
-      await expect(() => getBurgers()).rejects.toThrow(
-        "Error getting burgers from database",
-      );
+      await expect(() => getBurgers()).rejects.toThrow(expectedErrorMessage);
     });
   });
 });

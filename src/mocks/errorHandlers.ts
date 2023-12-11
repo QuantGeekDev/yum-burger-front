@@ -8,6 +8,9 @@ export const errorHandlers = [
   http.delete(`${apiUrl}/burgers/6567d60e9fbd027bb1696969`, () =>
     HttpResponse.error(),
   ),
+  http.get(`${apiUrl}/burgers/6567d60e9fbd027bb1696969`, () =>
+    HttpResponse.error(),
+  ),
 
   http.post(`${apiUrl}/burgers`, () => {
     return HttpResponse.error();

@@ -19,7 +19,7 @@ const useBurgersApi = () => {
 
       return burgers;
     } catch (error) {
-      throw new Error("Error getting burgers from database");
+      throw new Error("Error getting burgers from API");
     }
   }, []);
 
@@ -31,7 +31,7 @@ const useBurgersApi = () => {
         } = await axios.delete(`/burgers/${id}`);
         return burger;
       } catch (error) {
-        throw new Error("Error deleting burger from database");
+        throw new Error("Error deleting burger from API");
       }
     },
     [],
@@ -39,15 +39,23 @@ const useBurgersApi = () => {
 
   const addBurger = useCallback(async (newBurger: BurgerStructure) => {
     try {
-      const response = await axios.post("/burgers", newBurger);
-      const addedBurger = (await response.data) as MongooseBurgerStructure;
-      return addedBurger;
+      const { data: addedBurger } = await axios.post("/burgers", newBurger);
+      return addedBurger as MongooseBurgerStructure;
     } catch (error) {
-      throw new Error("Error adding burger to database");
+      throw new Error("Error adding burger to API");
     }
   }, []);
 
-  return { getBurgers, deleteBurger, addBurger };
+  const getBurgerById = useCallback(async (id: string) => {
+    try {
+      const { data: requestedBurger } = await axios.get(`/burgers/${id}`);
+      return requestedBurger;
+    } catch (error) {
+      throw new Error("Error getting burger by Id from API");
+    }
+  }, []);
+
+  return { getBurgers, deleteBurger, addBurger, getBurgerById };
 };
 
 export default useBurgersApi;

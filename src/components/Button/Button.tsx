@@ -3,17 +3,19 @@ import ButtonStyled from "./ButtonStyled";
 interface ButtonProps {
   className: string;
   text: string;
-  actionOnClick: (event: React.MouseEvent) => void;
+  actionOnClick?: (event: React.MouseEvent) => void;
   iconUrl?: string;
+  type?: "button" | "submit";
 }
 const Button = ({
   className,
   text,
   actionOnClick,
   iconUrl,
+  type = "button",
 }: ButtonProps): React.ReactElement => {
   return (
-    <ButtonStyled className={className} onClick={actionOnClick}>
+    <ButtonStyled className={className} onClick={actionOnClick} type={type}>
       {iconUrl && (
         <img
           className="button__icon"

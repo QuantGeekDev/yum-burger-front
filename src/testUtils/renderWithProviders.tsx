@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { RenderResult, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import defaultTheme from "../styles/DefaultTheme";
 import GlobalStyles from "../styles/globalStyles";
 import { rootReducer, store } from "../store";
@@ -33,29 +33,44 @@ const renderWithProviders = (
   );
 };
 
+export const renderWithProvidersAndMemoryBrowser = (
+  child: JSX.Element,
+  initialEntry: string[],
+  mockStore?: Store,
+): RenderResult => {
+  return render(
+    <Provider store={mockStore ?? store}>
+      <MemoryRouter initialEntries={initialEntry}>
+        <ThemeProvider theme={defaultTheme}>
+          <GlobalStyles />
+          <ToastContainer />
+          {child}
+        </ThemeProvider>
+      </MemoryRouter>
+    </Provider>,
+  );
+};
+
 export const smartRenderWithProviders = (
   child: JSX.Element,
   mockStore?: Store,
 ) => {
   const smartRender = () =>
     render(
-      <Provider store={mockStore ?? store}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Provider store={mockStore ?? store}>
           <ThemeProvider theme={defaultTheme}>
             <GlobalStyles />
             <ToastContainer />
             {child}
           </ThemeProvider>
-        </BrowserRouter>
-      </Provider>,
+        </Provider>
+      </BrowserRouter>,
     );
 
   const smartRenderWithProviderResponse = {
     render: () => smartRender(),
-    getByText: (text: string) => {
-      smartRender();
-      return screen.getByText(text);
-    },
+
     getByRole: (role: string, options: { name: string }) => {
       smartRender();
       return screen.getByRole(role, options);
@@ -63,5 +78,34 @@ export const smartRenderWithProviders = (
   };
 
   return smartRenderWithProviderResponse;
+};
+
+export const smartRenderWithMemoryRouterProviders = (
+  child: JSX.Element,
+  initialEntries: string[],
+  mockStore?: Store,
+) => {
+  const smartRenderWithMemoryRouter = () =>
+    render(
+      <Provider store={mockStore ?? store}>
+        <MemoryRouter initialEntries={initialEntries}>
+          <ThemeProvider theme={defaultTheme}>
+            <GlobalStyles />
+            <ToastContainer />
+            {child}
+          </ThemeProvider>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+  const smartRenderWithMemoryRouterProviderResponse = {
+    render: () => smartRenderWithMemoryRouter(),
+    getByText: (text: string) => {
+      smartRenderWithMemoryRouter();
+      return screen.getByText(text);
+    },
+  };
+
+  return smartRenderWithMemoryRouterProviderResponse;
 };
 export default renderWithProviders;

@@ -46,7 +46,7 @@ const BurgersPage = (): React.ReactElement => {
 
   return (
     <BurgersPageStyled className="burgers-page">
-      {isLoading && <Loading />}
+      {isLoading ? <Loading /> : null}
       <h2 className="burgers-page__title">Our Burgers</h2>
       <BurgersList />
     </BurgersPageStyled>

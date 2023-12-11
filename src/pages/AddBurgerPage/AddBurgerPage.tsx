@@ -1,11 +1,30 @@
+import { toast } from "react-toastify";
 import Form from "../../components/Form/Form";
+import useBurgersApi from "../../hooks/useBurgerApi";
 import { BurgerStructure } from "../../store/features/burgers/types";
 import AddBurgerPageStyled from "./AddBurgerPageStyled";
+import { addBurgerActionCreator } from "../../store/features/burgers/burgersSlice";
+import { useAppDispatch } from "../../store/hooks";
+import { useNavigate } from "react-router-dom";
 
 const AddBurgerPage = (): React.ReactElement => {
-  const onSubmit = (burger: BurgerStructure) => {
+  const { addBurger } = useBurgersApi();
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const onSubmit = async (burger: BurgerStructure) => {
     event?.preventDefault();
-    console.log(burger);
+    try {
+      const response = await addBurger(burger);
+      if (!response) {
+        throw new Error("Empty response");
+      }
+      const addBurgerAction = addBurgerActionCreator(burger);
+      dispatch(addBurgerAction);
+      toast.success("Burger added succesfully");
+      navigate("/home");
+    } catch (error) {
+      toast.error("Error adding burger");
+    }
   };
 
   return (

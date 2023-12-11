@@ -33,32 +33,44 @@ const renderWithProviders = (
   );
 };
 
+export const renderWithProvidersAndMemoryBrowser = (
+  child: JSX.Element,
+  initialEntry: string[],
+  mockStore?: Store,
+): RenderResult => {
+  return render(
+    <Provider store={mockStore ?? store}>
+      <MemoryRouter initialEntries={initialEntry}>
+        <ThemeProvider theme={defaultTheme}>
+          <GlobalStyles />
+          <ToastContainer />
+          {child}
+        </ThemeProvider>
+      </MemoryRouter>
+    </Provider>,
+  );
+};
+
 export const smartRenderWithProviders = (
   child: JSX.Element,
   mockStore?: Store,
-  hasMemoryRouter: boolean = false,
 ) => {
-  const smartRender = () => {
-    const Router = hasMemoryRouter ? MemoryRouter : BrowserRouter;
-    return render(
-      <Provider store={mockStore ?? store}>
-        <Router>
+  const smartRender = () =>
+    render(
+      <BrowserRouter>
+        <Provider store={mockStore ?? store}>
           <ThemeProvider theme={defaultTheme}>
             <GlobalStyles />
             <ToastContainer />
             {child}
           </ThemeProvider>
-        </Router>
-      </Provider>,
+        </Provider>
+      </BrowserRouter>,
     );
-  };
 
   const smartRenderWithProviderResponse = {
     render: () => smartRender(),
-    getByText: (text: string) => {
-      smartRender();
-      return screen.getByText(text);
-    },
+
     getByRole: (role: string, options: { name: string }) => {
       smartRender();
       return screen.getByRole(role, options);
@@ -66,5 +78,34 @@ export const smartRenderWithProviders = (
   };
 
   return smartRenderWithProviderResponse;
+};
+
+export const smartRenderWithMemoryRouterProviders = (
+  child: JSX.Element,
+  initialEntries: string[],
+  mockStore?: Store,
+) => {
+  const smartRenderWithMemoryRouter = () =>
+    render(
+      <Provider store={mockStore ?? store}>
+        <MemoryRouter initialEntries={initialEntries}>
+          <ThemeProvider theme={defaultTheme}>
+            <GlobalStyles />
+            <ToastContainer />
+            {child}
+          </ThemeProvider>
+        </MemoryRouter>
+      </Provider>,
+    );
+
+  const smartRenderWithMemoryRouterProviderResponse = {
+    render: () => smartRenderWithMemoryRouter(),
+    getByText: (text: string) => {
+      smartRenderWithMemoryRouter();
+      return screen.getByText(text);
+    },
+  };
+
+  return smartRenderWithMemoryRouterProviderResponse;
 };
 export default renderWithProviders;

@@ -22,8 +22,6 @@ const BurgerCardStyled = styled.article`
       width: 100%;
       border-radius: 15px;
       object-fit: cover;
-      pointer-events: none;
-      user-select: none;
     }
 
     &__delete-button {

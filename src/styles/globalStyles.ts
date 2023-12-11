@@ -45,8 +45,12 @@ h1,
 h2,
 h3 {
   font-family: ${({ theme }) => theme.fonts.title};
+  margin: 0;
 }
 
+p {
+  margin: 0;
+}
 ol, ul {
   list-style: none;
   padding-inline-start: 0;

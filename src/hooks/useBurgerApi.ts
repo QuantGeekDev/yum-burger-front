@@ -6,6 +6,7 @@ import {
 import { useCallback } from "react";
 
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+axios.defaults.withCredentials = false;
 
 const useBurgersApi = () => {
   const getBurgers = useCallback(async (): Promise<
@@ -39,7 +40,7 @@ const useBurgersApi = () => {
   const addBurger = useCallback(async (newBurger: BurgerStructure) => {
     try {
       const response = await axios.post("/burgers", newBurger);
-      const addedBurger = (await response.data) as BurgerStructure;
+      const addedBurger = (await response.data) as MongooseBurgerStructure;
       return addedBurger;
     } catch (error) {
       throw new Error("Error adding burger to database");

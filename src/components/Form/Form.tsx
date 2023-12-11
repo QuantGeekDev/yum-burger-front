@@ -48,10 +48,10 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
           <input
             id="name"
             type="text"
-            placeholder="josh"
             value={name}
             onChange={onChange}
             required={true}
+            aria-required="true"
           />
         </div>
 
@@ -59,10 +59,11 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
           <label htmlFor="imageUrl">Image URL </label>
           <input
             id="imageUrl"
-            type="text"
+            type="url"
             value={imageUrl}
             onChange={onChange}
-            required={true}
+            required
+            aria-required="true"
           />
         </div>
 
@@ -73,7 +74,8 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
             type="text"
             value={ingredients}
             onChange={onChange}
-            required={true}
+            required
+            aria-required="true"
           />
         </div>
 
@@ -86,13 +88,14 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
               value={price}
               onChange={onChange}
               step=".01"
-              required={true}
+              required
+              aria-required="true"
             />
             <span className="currency__value">€</span>
           </div>
         </div>
 
-        <div className="form-controls__calories">
+        <div className="form-controls__calories  :required">
           <label htmlFor="calories">Calories </label>
           <div className="calories">
             <input
@@ -100,7 +103,8 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
               type="number"
               value={calories}
               onChange={onChange}
-              required={true}
+              required
+              aria-required="true"
             />
             <span className="calories__value">cal</span>
           </div>
@@ -113,7 +117,6 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
             type="checkbox"
             checked={hasGluten}
             onChange={onChange}
-            required={true}
           />
         </div>
 
@@ -124,7 +127,6 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
             type="checkbox"
             onChange={onChange}
             checked={isVegan}
-            required={true}
           />
         </div>
       </div>
@@ -132,9 +134,8 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
       <Button
         className="button--transparent form-controls__submit"
         text={buttonText}
-        actionOnClick={() => {
-          onSubmit(burgerState);
-        }}
+        actionOnClick={() => {}}
+        type="submit"
       />
     </FormStyled>
   );

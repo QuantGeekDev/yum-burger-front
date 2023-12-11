@@ -1,9 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import {
-  BurgerStructure,
-  BurgersStateStructure,
-  type MongooseBurgerStructure,
-} from "./types";
+import { BurgersStateStructure, type MongooseBurgerStructure } from "./types";
 
 export const initialBurgersState: BurgersStateStructure = {
   burgers: [],
@@ -36,7 +32,7 @@ const burgersSlice = createSlice({
     },
     addBurger: (
       currentState,
-      action: PayloadAction<BurgerStructure>,
+      action: PayloadAction<MongooseBurgerStructure>,
     ): BurgersStateStructure => {
       const newBurger = action.payload;
       return {

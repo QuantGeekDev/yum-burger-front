@@ -1,5 +1,4 @@
 export interface BurgerStructure {
-  _id?: string;
   name: string;
   price: number;
   imageUrl: string;
@@ -14,5 +13,5 @@ export interface MongooseBurgerStructure extends BurgerStructure {
 }
 
 export interface BurgersStateStructure {
-  burgers: BurgerStructure[];
+  burgers: MongooseBurgerStructure[];
 }

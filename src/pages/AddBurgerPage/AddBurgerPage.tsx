@@ -14,11 +14,11 @@ const AddBurgerPage = (): React.ReactElement => {
   const onSubmit = async (burger: BurgerStructure) => {
     event?.preventDefault();
     try {
-      const response = await addBurger(burger);
-      if (!response) {
+      const newBurger = await addBurger(burger);
+      if (!newBurger) {
         throw new Error("Empty response");
       }
-      const addBurgerAction = addBurgerActionCreator(burger);
+      const addBurgerAction = addBurgerActionCreator(newBurger);
       dispatch(addBurgerAction);
       toast.success("Burger added succesfully");
       navigate("/home");

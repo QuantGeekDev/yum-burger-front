@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { RenderResult, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import defaultTheme from "../styles/DefaultTheme";
 import GlobalStyles from "../styles/globalStyles";
 import { rootReducer, store } from "../store";
@@ -36,19 +36,22 @@ const renderWithProviders = (
 export const smartRenderWithProviders = (
   child: JSX.Element,
   mockStore?: Store,
+  hasMemoryRouter: boolean = false,
 ) => {
-  const smartRender = () =>
-    render(
+  const smartRender = () => {
+    const Router = hasMemoryRouter ? MemoryRouter : BrowserRouter;
+    return render(
       <Provider store={mockStore ?? store}>
-        <BrowserRouter>
+        <Router>
           <ThemeProvider theme={defaultTheme}>
             <GlobalStyles />
             <ToastContainer />
             {child}
           </ThemeProvider>
-        </BrowserRouter>
+        </Router>
       </Provider>,
     );
+  };
 
   const smartRenderWithProviderResponse = {
     render: () => smartRender(),

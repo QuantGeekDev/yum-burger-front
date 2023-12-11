@@ -49,6 +49,18 @@ const burgersSlice = createSlice({
       });
       return { ...currentState, burgers: [requestedBurger[0]] };
     },
+    replaceBurgerById: (
+      currentState,
+      action: PayloadAction<MongooseBurgerStructure>,
+    ): BurgersStateStructure => {
+      const remainingBurgers = currentState.burgers.filter((burger) => {
+        return burger._id !== action.payload._id;
+      });
+      return {
+        ...currentState,
+        burgers: [...remainingBurgers, action.payload],
+      };
+    },
   },
 });
 
@@ -59,4 +71,5 @@ export const {
   deleteBurger: deleteBurgerActionCreator,
   addBurger: addBurgerActionCreator,
   getBurgerById: getBurgerByIdActionCreator,
+  replaceBurgerById: replaceBurgerByIdActionCreator,
 } = burgersSlice.actions;

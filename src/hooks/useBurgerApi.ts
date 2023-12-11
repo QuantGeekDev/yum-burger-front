@@ -51,7 +51,7 @@ const useBurgersApi = () => {
       const { data: requestedBurger } = await axios.get(`/burgers/${id}`);
       return requestedBurger;
     } catch (error) {
-      throw new Error("Error getting burger by Id from API");
+      throw new Error("Error getting burger by id from API");
     }
   }, []);
 

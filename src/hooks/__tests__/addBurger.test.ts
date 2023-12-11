@@ -24,8 +24,8 @@ describe("Given a useBurgerApi's addBurger method", () => {
   });
 
   describe("When it encounters an error handling a request", () => {
-    test("Then it should throw a new error 'Error adding burger to database' ", async () => {
-      const expectedErrorMessage = "Error adding burger to database";
+    test("Then it should throw a new error 'Error adding burger to API' ", async () => {
+      const expectedErrorMessage = "Error adding burger to API";
 
       server.use(...errorHandlers);
 

@@ -16,6 +16,10 @@ export const defaultHandlers = [
     HttpResponse.json({ burger: classicBurgerMock }),
   ),
 
+  http.get(`${apiUrl}/burgers/6567d60e9fbd027bb1696969`, () =>
+    HttpResponse.json({ burger: classicBurgerMock }),
+  ),
+
   http.post(`${apiUrl}/burgers`, () => {
     return HttpResponse.json({ burger: veganBurgerMock });
   }),

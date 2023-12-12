@@ -3,6 +3,7 @@ import { BurgersStateStructure, type MongooseBurgerStructure } from "./types";
 
 export const initialBurgersState: BurgersStateStructure = {
   burgers: [],
+  selectedBurger: {} as MongooseBurgerStructure,
 };
 
 const burgersSlice = createSlice({
@@ -37,7 +38,7 @@ const burgersSlice = createSlice({
       const newBurger = action.payload;
       return {
         ...currentState,
-        burgers: [...currentState.burgers, newBurger],
+        selectedBurger: newBurger,
       };
     },
     getBurgerById: (
@@ -47,19 +48,13 @@ const burgersSlice = createSlice({
       const requestedBurger = currentState.burgers.filter((burger) => {
         return burger._id === action.payload;
       });
-      return { ...currentState, burgers: [requestedBurger[0]] };
+      return { ...currentState, selectedBurger: requestedBurger[0] };
     },
-    replaceBurgerById: (
+    loadBurger: (
       currentState,
       action: PayloadAction<MongooseBurgerStructure>,
     ): BurgersStateStructure => {
-      const remainingBurgers = currentState.burgers.filter((burger) => {
-        return burger._id !== action.payload._id;
-      });
-      return {
-        ...currentState,
-        burgers: [...remainingBurgers, action.payload],
-      };
+      return { ...currentState, selectedBurger: action.payload };
     },
   },
 });
@@ -71,5 +66,5 @@ export const {
   deleteBurger: deleteBurgerActionCreator,
   addBurger: addBurgerActionCreator,
   getBurgerById: getBurgerByIdActionCreator,
-  replaceBurgerById: replaceBurgerByIdActionCreator,
+  loadBurger: loadBurgerActionCreator,
 } = burgersSlice.actions;

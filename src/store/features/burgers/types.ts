@@ -14,4 +14,5 @@ export interface MongooseBurgerStructure extends BurgerStructure {
 
 export interface BurgersStateStructure {
   burgers: MongooseBurgerStructure[];
+  selectedBurger: MongooseBurgerStructure;
 }

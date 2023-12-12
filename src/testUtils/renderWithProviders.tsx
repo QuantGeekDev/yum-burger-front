@@ -7,12 +7,20 @@ import GlobalStyles from "../styles/globalStyles";
 import { rootReducer, store } from "../store";
 import { Store, configureStore } from "@reduxjs/toolkit";
 import { ToastContainer } from "react-toastify";
-import { burgersMock } from "../store/features/burgers/mocks/burgersMock";
+import {
+  burgersMock,
+  cheeseBurgerMock,
+} from "../store/features/burgers/mocks/burgersMock";
 
 export const mockStore = configureStore({
   reducer: { rootReducer: rootReducer },
   preloadedState: {
-    rootReducer: { burgersReducer: { burgers: burgersMock } },
+    rootReducer: {
+      burgersReducer: {
+        burgers: burgersMock,
+        selectedBurger: cheeseBurgerMock,
+      },
+    },
   },
 });
 
@@ -33,7 +41,7 @@ const renderWithProviders = (
   );
 };
 
-export const renderWithProvidersAndMemoryBrowser = (
+export const renderWithProvidersAndMemoryRouter = (
   child: JSX.Element,
   initialEntry: string[],
   mockStore?: Store,

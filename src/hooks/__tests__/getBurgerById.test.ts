@@ -2,21 +2,21 @@ import { renderHook } from "@testing-library/react";
 import useBurgersApi from "../useBurgerApi";
 import { server } from "../../mocks/node";
 import { errorHandlers } from "../../mocks/errorHandlers";
+import { classicBurgerMock } from "../../store/features/burgers/mocks/burgersMock";
 
 describe("Given a useBurgerApi's getBurgerById method", () => {
   describe("When it receives a request to get burger with id '6567d60e9fbd027bb1696969'", () => {
     test("Then it should return a classic burger", async () => {
       const classicBurgerId = "6567d60e9fbd027bb1696969";
-      const classicBurgerName = "Classic Burger";
       const {
         result: {
           current: { getBurgerById },
         },
       } = renderHook(() => useBurgersApi());
 
-      const { burger } = await getBurgerById(classicBurgerId);
+      const burger = await getBurgerById(classicBurgerId);
 
-      expect(burger).toHaveProperty("name", classicBurgerName);
+      expect(burger).toEqual({ burger: classicBurgerMock });
     });
   });
 

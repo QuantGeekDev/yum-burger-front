@@ -17,7 +17,7 @@ export const cheeseBurgerMock: MongooseBurgerStructure = {
   _id: "6567d60e9fbd027bb1d9d722",
   name: "Cheese Burger",
   price: 6,
-  isVegan: false,
+  isVegan: true,
   calories: 700,
   hasGluten: true,
   isOrdered: false,

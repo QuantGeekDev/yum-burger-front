@@ -5,10 +5,10 @@ import { loadBurgerActionCreator } from "../../store/features/burgers/burgersSli
 import useBurgersApi from "../../hooks/useBurgerApi";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const BurgerDetailPage = (): React.ReactElement => {
   const { id: currentBurgerId } = useParams();
-  console.log("CURRENT BURGER ID: ", currentBurgerId);
 
   const dispatch = useAppDispatch();
 
@@ -24,13 +24,12 @@ const BurgerDetailPage = (): React.ReactElement => {
     (async () => {
       try {
         const apiBurger = await getBurgerById(currentBurgerId!);
-        console.log("API BURGER", apiBurger);
 
         const loadBurgerAction = loadBurgerActionCreator(apiBurger);
 
         dispatch(loadBurgerAction);
       } catch (error) {
-        throw new Error(`Error fetching burger from API`);
+        toast.error("Error loading from API");
       }
     })();
   }, [currentBurgerId, dispatch, burger, getBurgerById]);

@@ -1,5 +1,6 @@
 import { screen } from "@testing-library/react";
 import renderWithProviders, {
+  mockStore,
   renderWithProvidersAndMemoryRouter,
 } from "../../testUtils/renderWithProviders";
 import App from "./App";
@@ -7,6 +8,9 @@ import userEvent from "@testing-library/user-event";
 
 import { server } from "../../mocks/node";
 import { addBurgerErrorHandler } from "../../mocks/addBurgerErrorHandler";
+import { errorHandlers } from "../../mocks/errorHandlers";
+import { Route, Routes } from "react-router-dom";
+import BurgerDetailPage from "../../pages/BurgerDetailPage/BurgerDetailPage";
 
 describe("Given an App component", () => {
   describe("When it is rendered and the route is '/home'", () => {
@@ -98,6 +102,43 @@ describe("Given an App component", () => {
       const actualToast = screen.getAllByText(expectedToastMessage);
 
       expect(actualToast[0]).toBeVisible();
+    });
+  });
+});
+describe("Given a BurgerDetailPage component", () => {
+  describe("When it is rendered with the burger 'Cheese Burger'", () => {
+    test("Then it should have the title 'Cheese Burger' visible", async () => {
+      const cheeseBurgerTitle = "Cheese Burger";
+
+      renderWithProvidersAndMemoryRouter(
+        <App />,
+        ["/burgers/6567d60e9fbd027bb1d9d722"],
+        mockStore,
+      );
+
+      const actualTitle = screen.getByRole("heading", {
+        name: cheeseBurgerTitle,
+      });
+
+      expect(actualTitle).toContainHTML(cheeseBurgerTitle);
+    });
+  });
+
+  describe("When it encounters an error", () => {
+    test("Then it should throw a new error", async () => {
+      server.use(...errorHandlers);
+      const expectedToastMessage = "Error loading from API";
+
+      renderWithProvidersAndMemoryRouter(
+        <Routes>
+          <Route path="/burgers/:id" element={<BurgerDetailPage />} />
+        </Routes>,
+        ["/burgers/6567d60e9fbd027bb1d9d722"],
+      );
+
+      const actualToast = await screen.findByText(expectedToastMessage);
+
+      expect(actualToast).toBeVisible();
     });
   });
 });

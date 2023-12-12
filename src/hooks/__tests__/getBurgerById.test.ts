@@ -16,7 +16,7 @@ describe("Given a useBurgerApi's getBurgerById method", () => {
 
       const burger = await getBurgerById(classicBurgerId);
 
-      expect(burger).toEqual({ burger: classicBurgerMock });
+      expect(burger).toEqual(classicBurgerMock);
     });
   });
 

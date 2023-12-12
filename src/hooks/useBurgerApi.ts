@@ -52,8 +52,10 @@ const useBurgersApi = () => {
   const getBurgerById = useCallback(
     async (id: string): Promise<MongooseBurgerStructure> => {
       try {
-        const { data: requestedBurger } = await axios.get(`/burgers/${id}`);
-        return requestedBurger;
+        const {
+          data: { burger },
+        } = await axios.get(`/burgers/${id}`);
+        return burger;
       } catch (error) {
         throw new Error("Error getting burger by id from API");
       }

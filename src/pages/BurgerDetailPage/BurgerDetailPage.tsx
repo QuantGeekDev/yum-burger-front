@@ -22,9 +22,9 @@ const BurgerDetailPage = (): React.ReactElement => {
 
   useEffect(() => {
     (async () => {
+      scrollTo(0, 0);
       try {
         const apiBurger = await getBurgerById(currentBurgerId!);
-
         const loadBurgerAction = loadBurgerActionCreator(apiBurger);
 
         dispatch(loadBurgerAction);
@@ -32,7 +32,7 @@ const BurgerDetailPage = (): React.ReactElement => {
         toast.error("Error loading from API");
       }
     })();
-  }, [currentBurgerId, dispatch, burger, getBurgerById]);
+  }, [currentBurgerId, dispatch, getBurgerById]);
 
   return (
     <BurgerDetailPageStyled>

@@ -1,6 +1,6 @@
 import { screen } from "@testing-library/react";
 import renderWithProviders, {
-  renderWithProvidersAndMemoryBrowser,
+  renderWithProvidersAndMemoryRouter,
 } from "../../testUtils/renderWithProviders";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
@@ -28,7 +28,7 @@ describe("Given an App component", () => {
       const user = userEvent.setup();
       const initialPath = "/burgers/add";
       const homePageTitle = "Our Burgers";
-      renderWithProvidersAndMemoryBrowser(<App />, [initialPath]);
+      renderWithProvidersAndMemoryRouter(<App />, [initialPath]);
 
       const submitButton = screen.getByRole("button", {
         name: submitButtonText,
@@ -72,7 +72,7 @@ describe("Given an App component", () => {
       const user = userEvent.setup();
       const initialPath = "/burgers/add";
 
-      renderWithProvidersAndMemoryBrowser(<App />, [initialPath]);
+      renderWithProvidersAndMemoryRouter(<App />, [initialPath]);
 
       const submitButton = screen.getByRole("button", {
         name: submitButtonText,

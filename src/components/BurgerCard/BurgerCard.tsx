@@ -32,7 +32,7 @@ const BurgerCard = ({
 
   return (
     <BurgerCardStyled className="burger" aria-label={name}>
-      <NavLink to={`/${_id}`}>
+      <NavLink to={`/burgers/${_id}`}>
         <h2 className="burger__title">{name}</h2>
 
         <img

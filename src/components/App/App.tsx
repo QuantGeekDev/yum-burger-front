@@ -17,7 +17,7 @@ const App = (): React.ReactElement => {
         <Route path="/" element={<Navigate to={"/home"} />} />
         <Route path="/home" element={<BurgersPage />} />
         <Route path="/burgers/add" element={<AddBurgerPage />} />
-        <Route path="/burgers/dev" element={<BurgerDetailPage />} />
+        <Route path="/burgers/:id" element={<BurgerDetailPage />} />
         <Route path="*" element={<h1> 404 Page Not Found </h1>} />
       </Routes>
     </AppStyled>

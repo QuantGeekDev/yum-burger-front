@@ -1,18 +1,29 @@
 import { ThemeProvider } from "styled-components";
 import { RenderResult, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter, Route, Routes } from "react-router-dom";
 import defaultTheme from "../styles/DefaultTheme";
 import GlobalStyles from "../styles/globalStyles";
 import { rootReducer, store } from "../store";
 import { Store, configureStore } from "@reduxjs/toolkit";
 import { ToastContainer } from "react-toastify";
-import { burgersMock } from "../store/features/burgers/mocks/burgersMock";
+import {
+  burgersMock,
+  cheeseBurgerMock,
+} from "../store/features/burgers/mocks/burgersMock";
+import { MongooseBurgerStructure } from "../store/features/burgers/types";
+
+import BurgerDetailPage from "../pages/BurgerDetailPage/BurgerDetailPage";
 
 export const mockStore = configureStore({
   reducer: { rootReducer: rootReducer },
   preloadedState: {
-    rootReducer: { burgersReducer: { burgers: burgersMock } },
+    rootReducer: {
+      burgersReducer: {
+        burgers: burgersMock,
+        selectedBurger: cheeseBurgerMock as MongooseBurgerStructure,
+      },
+    },
   },
 });
 
@@ -33,7 +44,7 @@ const renderWithProviders = (
   );
 };
 
-export const renderWithProvidersAndMemoryBrowser = (
+export const renderWithProvidersAndMemoryRouter = (
   child: JSX.Element,
   initialEntry: string[],
   mockStore?: Store,
@@ -44,6 +55,9 @@ export const renderWithProvidersAndMemoryBrowser = (
         <ThemeProvider theme={defaultTheme}>
           <GlobalStyles />
           <ToastContainer />
+          <Routes>
+            <Route path="/burgers/:id" element={<BurgerDetailPage />} />
+          </Routes>
           {child}
         </ThemeProvider>
       </MemoryRouter>

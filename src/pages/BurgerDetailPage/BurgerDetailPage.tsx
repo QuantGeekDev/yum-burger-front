@@ -1,11 +1,40 @@
-import { toast } from "react-toastify";
 import Button from "../../components/Button/Button";
-import { cheeseBurgerMock } from "../../store/features/burgers/mocks/burgersMock";
 import BurgerDetailPageStyled from "./BurgerDetailStyled";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { loadBurgerActionCreator } from "../../store/features/burgers/burgersSlice";
+import useBurgersApi from "../../hooks/useBurgerApi";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 const BurgerDetailPage = (): React.ReactElement => {
-  const { name, ingredients, price, imageUrl, isVegan, hasGluten } =
-    cheeseBurgerMock;
+  const { id: currentBurgerId } = useParams();
+  console.log("CURRENT BURGER ID: ", currentBurgerId);
+
+  const dispatch = useAppDispatch();
+
+  const { getBurgerById } = useBurgersApi();
+
+  const burger = useAppSelector(
+    (state) => state.rootReducer.burgersReducer.selectedBurger,
+  );
+
+  const { name, ingredients, price, imageUrl, isVegan, hasGluten } = burger;
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const apiBurger = await getBurgerById(currentBurgerId!);
+        console.log("API BURGER", apiBurger);
+
+        const loadBurgerAction = loadBurgerActionCreator(apiBurger);
+
+        dispatch(loadBurgerAction);
+      } catch (error) {
+        throw new Error(`Error fetching burger from API`);
+      }
+    })();
+  }, [currentBurgerId, dispatch, burger, getBurgerById]);
+
   return (
     <BurgerDetailPageStyled>
       <h1 className="burger-detail__name">{name}</h1>
@@ -39,9 +68,7 @@ const BurgerDetailPage = (): React.ReactElement => {
           <Button
             className="button button--transparent"
             text="Order"
-            actionOnClick={() =>
-              toast.error("Unable to place order, please try again later")
-            }
+            actionOnClick={() => {}}
           />
         </div>
       </div>

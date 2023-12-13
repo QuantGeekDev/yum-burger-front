@@ -15,6 +15,7 @@ const AddBurgerPageStyled = styled.section`
       text-align: center;
       font-family: ${({ theme }) => theme.fonts.title};
       color: ${({ theme }) => theme.colors.neutral};
+      padding: 5px 0 15px 0;
     }
   }
 `;

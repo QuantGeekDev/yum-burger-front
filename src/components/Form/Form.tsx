@@ -5,8 +5,13 @@ import { BurgerStructure } from "../../store/features/burgers/types";
 interface FormProps {
   buttonText: string;
   onSubmit: (event: FormEvent, newBurger: BurgerStructure) => void;
+  className?: string;
 }
-const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
+const Form = ({
+  buttonText,
+  onSubmit,
+  className,
+}: FormProps): React.ReactElement => {
   const initialBurgerFormState: BurgerStructure = {
     name: "",
     imageUrl: "",
@@ -38,7 +43,7 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
 
   return (
     <FormStyled
-      className="form"
+      className={className ?? ""}
       autoComplete="off"
       onSubmit={(currentEvent) => onSubmit(currentEvent, burgerState)}
     >

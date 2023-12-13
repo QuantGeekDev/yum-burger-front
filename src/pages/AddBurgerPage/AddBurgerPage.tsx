@@ -6,13 +6,14 @@ import AddBurgerPageStyled from "./AddBurgerPageStyled";
 import { addBurgerActionCreator } from "../../store/features/burgers/burgersSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
+import { FormEvent } from "react";
 
 const AddBurgerPage = (): React.ReactElement => {
   const { addBurger } = useBurgersApi();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const onSubmit = async (burger: BurgerStructure) => {
-    event?.preventDefault();
+  const onSubmit = async (currentEvent: FormEvent, burger: BurgerStructure) => {
+    currentEvent.preventDefault();
     try {
       const newBurger = await addBurger(burger);
       if (!newBurger) {

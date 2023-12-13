@@ -14,7 +14,7 @@ const BurgerCardStyled = styled.article`
       font-size: 1.65rem;
       font-weight: 700;
       line-height: normal;
-      text-shadow: 0px 2px 4px #000c;
+      text-shadow: 2px 2px 4px #000c;
     }
 
     &__image {
@@ -27,12 +27,32 @@ const BurgerCardStyled = styled.article`
     &__delete-button {
       position: absolute;
       cursor: pointer;
-      right: 5px;
-      top: 5px;
+      bottom: 10px;
+      left: 10px;
       font-family: ${({ theme }) => theme.fonts.title};
       font-size: 1rem;
       font-weight: 800;
+      background-color: #0005;
+      padding: 5px;
+      border-radius: 10px;
     }
+
+    &__modify-button {
+      position: absolute;
+      cursor: pointer;
+      bottom: 10px;
+      right: 10px;
+      font-family: ${({ theme }) => theme.fonts.title};
+      font-size: 1rem;
+      font-weight: 800;
+      background-color: #0005;
+      padding: 5px;
+      border-radius: 10px;
+    }
+  }
+
+  .button__text {
+    text-shadow: #000f 2px 2px;
   }
 `;
 

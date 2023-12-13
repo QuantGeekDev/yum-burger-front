@@ -12,10 +12,10 @@ const BurgersList = (): React.ReactElement => {
   );
 
   return (
-    <BurgersListStyled>
-      <ul>
+    <BurgersListStyled className="burgers">
+      <ul className="burgers__list">
         {burgers.map((burger) => (
-          <li key={burger._id}>
+          <li className={burger.name} key={burger._id}>
             <BurgerCard burger={burger} />
           </li>
         ))}

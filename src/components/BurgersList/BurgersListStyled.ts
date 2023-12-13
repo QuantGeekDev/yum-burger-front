@@ -1,10 +1,15 @@
 import styled from "styled-components";
 
 const BurgersListStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  .burgers {
+    &__list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
 `;
 
 export default BurgersListStyled;

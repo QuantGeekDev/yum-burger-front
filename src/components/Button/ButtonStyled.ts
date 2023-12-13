@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 const ButtonStyled = styled.button`
-  width: 80px;
   display: flex;
-  gap: 5px;
   justify-content: center;
   align-items: center;
 
   &.button {
+    &__icon {
+      fill: #fff;
+    }
     &--transparent {
       border: none;
       color: ${({ theme }) => theme.colors.neutral};

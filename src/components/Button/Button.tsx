@@ -6,6 +6,7 @@ interface ButtonProps {
   actionOnClick?: (event: React.MouseEvent) => void;
   iconUrl?: string;
   type?: "button" | "submit";
+  altText?: string;
 }
 const Button = ({
   className,
@@ -13,6 +14,7 @@ const Button = ({
   actionOnClick,
   iconUrl,
   type = "button",
+  altText = "",
 }: ButtonProps): React.ReactElement => {
   return (
     <ButtonStyled className={className} onClick={actionOnClick} type={type}>
@@ -20,9 +22,9 @@ const Button = ({
         <img
           className="button__icon"
           src={iconUrl}
-          alt=""
-          width="50"
-          height="50"
+          alt={altText}
+          width="25"
+          height="25"
         />
       )}
       <span className="button__text">{text} </span>

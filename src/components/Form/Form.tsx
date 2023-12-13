@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import Button from "../Button/Button";
 import FormStyled from "./FormStyled";
 import { BurgerStructure } from "../../store/features/burgers/types";
 interface FormProps {
   buttonText: string;
-  onSubmit: (newBurger: BurgerStructure) => void;
+  onSubmit: (event: FormEvent, newBurger: BurgerStructure) => void;
 }
 const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
   const initialBurgerFormState: BurgerStructure = {
@@ -40,7 +40,7 @@ const Form = ({ buttonText, onSubmit }: FormProps): React.ReactElement => {
     <FormStyled
       className="form"
       autoComplete="off"
-      onSubmit={() => onSubmit(burgerState)}
+      onSubmit={(currentEvent) => onSubmit(currentEvent, burgerState)}
     >
       <div className="form-controls">
         <div className="form-controls__name">

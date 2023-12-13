@@ -9,6 +9,7 @@ const ButtonStyled = styled.button`
     &__icon {
       fill: #fff;
     }
+
     &--transparent {
       border: none;
       color: ${({ theme }) => theme.colors.neutral};

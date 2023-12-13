@@ -1,16 +1,26 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import Button from "../Button/Button";
 import FormStyled from "./FormStyled";
-import { BurgerStructure } from "../../store/features/burgers/types";
+import {
+  BurgerStructure,
+  MongooseBurgerStructure,
+} from "../../store/features/burgers/types";
+
 interface FormProps {
   buttonText: string;
-  onSubmit: (event: FormEvent, newBurger: BurgerStructure) => void;
+  onSubmit: (
+    event: FormEvent,
+    newBurger: MongooseBurgerStructure | BurgerStructure,
+  ) => void;
   className?: string;
+  burgerToModify?: MongooseBurgerStructure;
 }
+
 const Form = ({
   buttonText,
   onSubmit,
   className,
+  burgerToModify,
 }: FormProps): React.ReactElement => {
   const initialBurgerFormState: BurgerStructure = {
     name: "",
@@ -22,9 +32,15 @@ const Form = ({
     isVegan: false,
   };
 
-  const [burgerState, setBurgerState] = useState<BurgerStructure>(
-    initialBurgerFormState,
-  );
+  const [burgerState, setBurgerState] = useState<
+    BurgerStructure | MongooseBurgerStructure
+  >(burgerToModify ?? initialBurgerFormState);
+
+  useEffect(() => {
+    if (burgerToModify) {
+      setBurgerState(burgerToModify);
+    }
+  }, [burgerToModify]);
 
   const onChange = (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -53,7 +69,7 @@ const Form = ({
           <input
             id="name"
             type="text"
-            value={name}
+            defaultValue={name}
             onChange={onChange}
             required={true}
             aria-required="true"
@@ -65,7 +81,7 @@ const Form = ({
           <input
             id="imageUrl"
             type="url"
-            value={imageUrl}
+            defaultValue={imageUrl}
             onChange={onChange}
             required
             aria-required="true"
@@ -77,7 +93,7 @@ const Form = ({
           <input
             id="ingredients"
             type="text"
-            value={ingredients}
+            defaultValue={ingredients}
             onChange={onChange}
             required
             aria-required="true"
@@ -90,7 +106,7 @@ const Form = ({
             <input
               id="price"
               type="number"
-              value={price}
+              defaultValue={price}
               onChange={onChange}
               step=".01"
               required
@@ -106,7 +122,7 @@ const Form = ({
             <input
               id="calories"
               type="number"
-              value={calories}
+              defaultValue={calories}
               onChange={onChange}
               required
               aria-required="true"
@@ -120,7 +136,7 @@ const Form = ({
           <input
             id="hasGluten"
             type="checkbox"
-            checked={hasGluten}
+            defaultChecked={hasGluten}
             onChange={onChange}
           />
         </div>
@@ -131,7 +147,7 @@ const Form = ({
             id="isVegan"
             type="checkbox"
             onChange={onChange}
-            checked={isVegan}
+            defaultChecked={isVegan}
           />
         </div>
       </div>

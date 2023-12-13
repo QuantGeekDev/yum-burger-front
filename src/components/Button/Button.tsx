@@ -17,7 +17,11 @@ const Button = ({
   altText = "",
 }: ButtonProps): React.ReactElement => {
   return (
-    <ButtonStyled className={className} onClick={actionOnClick} type={type}>
+    <ButtonStyled
+      className={`button ${className}`}
+      onClick={actionOnClick}
+      type={type}
+    >
       {iconUrl && (
         <img
           className="button__icon"

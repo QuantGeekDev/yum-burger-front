@@ -70,7 +70,7 @@ const useBurgersApi = () => {
       try {
         const {
           data: { burger },
-        } = await axios.put(`/burgers/${modifiedBurger._id}`);
+        } = await axios.put(`/burgers`, modifiedBurger);
 
         return burger as MongooseBurgerStructure;
       } catch (error) {

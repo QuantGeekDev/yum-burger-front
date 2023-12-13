@@ -14,9 +14,7 @@ export const errorHandlers = [
   http.get(`${apiUrl}/burgers/6567d60e9fbd027bb1d9d722`, () =>
     HttpResponse.error(),
   ),
-  http.put(`${apiUrl}/burgers/6567d60e9fbd027bb1d9d722`, () =>
-    HttpResponse.error(),
-  ),
+  http.put(`${apiUrl}/burgers`, () => HttpResponse.error()),
 
   http.post(`${apiUrl}/burgers`, () => {
     return HttpResponse.error();

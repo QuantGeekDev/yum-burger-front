@@ -43,11 +43,19 @@ const BurgerCard = ({
           src={imageUrl}
         />
       </Link>
+
       <Button
         className="burger__delete-button button--transparent"
         text="Delete"
         actionOnClick={() => deleteBurger()}
       />
+      <Link to={`/burgers/modify/${_id}`}>
+        <Button
+          className="burger__modify-button button--transparent"
+          text="Modify"
+          actionOnClick={() => {}}
+        />
+      </Link>
     </BurgerCardStyled>
   );
 };

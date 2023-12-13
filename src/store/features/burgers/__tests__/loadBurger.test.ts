@@ -1,5 +1,5 @@
 import { loadBurgerActionCreator } from "../burgersSlice";
-import { cheeseBurgerMock } from "../mocks/burgersMock";
+import { editedCheeseBurgerMock } from "../mocks/burgersMock";
 import burgersReducer from "../burgersSlice";
 import { BurgersStateStructure, MongooseBurgerStructure } from "../types";
 
@@ -10,13 +10,13 @@ describe("Given a burgerSlice's loadBurger method", () => {
         burgers: [],
         selectedBurger: {} as MongooseBurgerStructure,
       };
-      const loadBurgerAction = loadBurgerActionCreator(cheeseBurgerMock);
+      const loadBurgerAction = loadBurgerActionCreator(editedCheeseBurgerMock);
       const newState = burgersReducer(
         initialState as BurgersStateStructure,
         loadBurgerAction,
       );
 
-      expect(newState.selectedBurger).toContain(cheeseBurgerMock);
+      expect(newState.selectedBurger).toContain(editedCheeseBurgerMock);
     });
   });
 });

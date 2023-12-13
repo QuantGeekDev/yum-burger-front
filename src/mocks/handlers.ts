@@ -1,7 +1,7 @@
 import { http, HttpResponse } from "msw";
 import {
   burgersMock,
-  cheeseBurgerMock,
+  editedCheeseBurgerMock,
   classicBurgerMock,
   veganBurgerMock,
 } from "../store/features/burgers/mocks/burgersMock";
@@ -22,10 +22,14 @@ export const defaultHandlers = [
   ),
 
   http.get(`${apiUrl}/burgers/6567d60e9fbd027bb1d9d722`, () =>
-    HttpResponse.json({ burger: cheeseBurgerMock }),
+    HttpResponse.json({ burger: editedCheeseBurgerMock }),
   ),
 
-  http.post(`${apiUrl}/burgers`, () => {
-    return HttpResponse.json({ burger: veganBurgerMock });
-  }),
+  http.post(`${apiUrl}/burgers`, () =>
+    HttpResponse.json({ burger: veganBurgerMock }),
+  ),
+
+  http.put(`${apiUrl}/burgers/6567d60e9fbd027bb1d9d722`, () =>
+    HttpResponse.json({ burger: editedCheeseBurgerMock }),
+  ),
 ];

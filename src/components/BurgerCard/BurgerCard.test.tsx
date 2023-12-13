@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { cheeseBurgerMock } from "../../store/features/burgers/mocks/burgersMock";
+import { editedCheeseBurgerMock } from "../../store/features/burgers/mocks/burgersMock";
 import renderWithProviders from "../../testUtils/renderWithProviders";
 import BurgerCard from "./BurgerCard";
 
@@ -8,7 +8,7 @@ describe("Given a BurgerCard component", () => {
     test("Then the title 'Cheese Burger' is visible", () => {
       const cheeseBurgerTitle = "Cheese Burger";
 
-      renderWithProviders(<BurgerCard burger={cheeseBurgerMock} />);
+      renderWithProviders(<BurgerCard burger={editedCheeseBurgerMock} />);
       const actualCheeseBurgerTitle = screen.getByRole("heading", {
         name: cheeseBurgerTitle,
       });
@@ -17,7 +17,7 @@ describe("Given a BurgerCard component", () => {
     });
 
     test("The the background image is visible", () => {
-      renderWithProviders(<BurgerCard burger={cheeseBurgerMock} />);
+      renderWithProviders(<BurgerCard burger={editedCheeseBurgerMock} />);
       const actualBackgroundImage = screen.getByRole("img");
 
       expect(actualBackgroundImage).toBeVisible();

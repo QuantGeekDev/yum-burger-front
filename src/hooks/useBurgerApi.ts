@@ -65,13 +65,14 @@ const useBurgersApi = () => {
 
   const modifyBurger = useCallback(
     async (
-      burger: MongooseBurgerStructure,
+      modifiedBurger: MongooseBurgerStructure,
     ): Promise<MongooseBurgerStructure> => {
       try {
         const {
-          data: { modifiedBurger },
-        } = await axios.put(`/burgers/${burger._id}`);
-        return modifiedBurger;
+          data: { burger },
+        } = await axios.put(`/burgers/${modifiedBurger._id}`);
+
+        return burger as MongooseBurgerStructure;
       } catch (error) {
         throw new Error("Error modifying burger from API");
       }

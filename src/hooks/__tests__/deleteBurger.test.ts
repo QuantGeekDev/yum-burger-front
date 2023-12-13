@@ -13,7 +13,7 @@ describe("Given a useApi's deleteBurger method", () => {
     result: {
       current: { deleteBurger },
     },
-  } = renderHook(useBurgersApi);
+  } = renderHook(() => useBurgersApi());
 
   const classicBurgerId = "6567d60e9fbd027bb1696969";
 

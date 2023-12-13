@@ -42,3 +42,16 @@ export const veganBurgerMock: MongooseBurgerStructure = {
 export const burgersMock = [classicBurgerMock, cheeseBurgerMock];
 
 export const burgersMockWithoutClassicBurger = [cheeseBurgerMock];
+
+export const editedCheeseBurgerMock: MongooseBurgerStructure = {
+  _id: "6567d60e9fbd027bb1d9d722",
+  name: "Cheese Burger",
+  price: 10,
+  isVegan: true,
+  calories: 700,
+  hasGluten: true,
+  isOrdered: false,
+  ingredients: "Brioche buns,  Ham, Cheese",
+  imageUrl:
+    "https://i.ibb.co/nMhsNVJ/rice-burger-with-salmon-cutlet-avocado-and-soy-sa-2021-12-09-07-32-56-utc.jpg",
+};

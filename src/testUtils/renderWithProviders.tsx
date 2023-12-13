@@ -9,7 +9,7 @@ import { Store, configureStore } from "@reduxjs/toolkit";
 import { ToastContainer } from "react-toastify";
 import {
   burgersMock,
-  cheeseBurgerMock,
+  editedCheeseBurgerMock,
 } from "../store/features/burgers/mocks/burgersMock";
 
 export const mockStore = configureStore({
@@ -18,7 +18,7 @@ export const mockStore = configureStore({
     rootReducer: {
       burgersReducer: {
         burgers: burgersMock,
-        selectedBurger: cheeseBurgerMock,
+        selectedBurger: editedCheeseBurgerMock,
       },
     },
   },

@@ -2,7 +2,10 @@ import burgersReducer, {
   loadBurgersActionCreator,
   initialBurgersState,
 } from "../burgersSlice";
-import { cheeseBurgerMock, classicBurgerMock } from "../mocks/burgersMock";
+import {
+  editedCheeseBurgerMock,
+  classicBurgerMock,
+} from "../mocks/burgersMock";
 import { BurgersStateStructure } from "../types";
 
 describe("Given a loadBurgers reducer", () => {
@@ -10,7 +13,7 @@ describe("Given a loadBurgers reducer", () => {
     test("Then it returns a state with Classic Burger and Cheese Burger", () => {
       const loadBurgersAction = loadBurgersActionCreator([
         classicBurgerMock,
-        cheeseBurgerMock,
+        editedCheeseBurgerMock,
       ]);
 
       const newState: BurgersStateStructure = burgersReducer(
@@ -22,7 +25,7 @@ describe("Given a loadBurgers reducer", () => {
 
       expect(burgers).toContain(classicBurgerMock);
 
-      expect(burgers).toContain(cheeseBurgerMock);
+      expect(burgers).toContain(editedCheeseBurgerMock);
     });
   });
 });

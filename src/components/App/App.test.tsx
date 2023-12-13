@@ -11,6 +11,14 @@ import { addBurgerErrorHandler } from "../../mocks/addBurgerErrorHandler";
 import { errorHandlers } from "../../mocks/errorHandlers";
 import { Route, Routes } from "react-router-dom";
 import BurgerDetailPage from "../../pages/BurgerDetailPage/BurgerDetailPage";
+import ModifyBurgerPage from "../../pages/ModifyBurgerPage/ModifyBurgerPage";
+import BurgersPage from "../../pages/BurgersPage/BurgersPage";
+import { modifyBurgerHandler } from "../../mocks/modifyBurgerHandler";
+
+beforeEach(() => {
+  server.resetHandlers();
+  vi.resetAllMocks();
+});
 
 describe("Given an App component", () => {
   describe("When it is rendered and the route is '/home'", () => {
@@ -105,6 +113,7 @@ describe("Given an App component", () => {
     });
   });
 });
+
 describe("Given a BurgerDetailPage component", () => {
   describe("When it is rendered with the burger 'Cheese Burger'", () => {
     test("Then it should have the title 'Cheese Burger' visible", async () => {
@@ -139,6 +148,74 @@ describe("Given a BurgerDetailPage component", () => {
       const actualToast = await screen.findByText(expectedToastMessage);
 
       expect(actualToast).toBeVisible();
+    });
+  });
+});
+
+describe("Given the route /burger/modify/:id ", () => {
+  describe("When the user edits a Cheese Burger to be named 'ClassBurger' ", () => {
+    test("Then the burger is visible with the name 'ClassBurger' ", async () => {
+      server.use(...modifyBurgerHandler);
+      const expectedNewName = "ClassBurger";
+      const nameInputLabel = "Name";
+      const submitLabel = "Modify Burger";
+
+      const user = userEvent.setup();
+      renderWithProvidersAndMemoryRouter(
+        <Routes>
+          <Route path="/burgers/modify/:id" element={<ModifyBurgerPage />} />
+          <Route path="/home" element={<BurgersPage />} />
+        </Routes>,
+        ["/burgers/modify/6567d60e9fbd027bb1d9d722"],
+        mockStore,
+      );
+
+      const nameInput = await screen.findByRole("textbox", {
+        name: nameInputLabel,
+      });
+
+      const submitButton = await screen.findByRole("button", {
+        name: submitLabel,
+      });
+
+      await user.clear(nameInput);
+      await user.type(nameInput, expectedNewName);
+      await user.click(submitButton);
+
+      const headingLabel = await screen.findByRole("heading", {
+        name: expectedNewName,
+      });
+
+      expect(headingLabel).toBeInTheDocument();
+    });
+  });
+
+  describe("When it encounters an error modifying a burger' ", () => {
+    test("Then the message 'Error modifying burger' is visible ", async () => {
+      server.use(...errorHandlers);
+      const expectedErrorMessage = "Error modifying burger";
+
+      const submitLabel = "Modify Burger";
+
+      const user = userEvent.setup();
+      renderWithProvidersAndMemoryRouter(
+        <Routes>
+          <Route path="/burgers/modify/:id" element={<ModifyBurgerPage />} />
+          <Route path="/home" element={<BurgersPage />} />
+        </Routes>,
+        ["/burgers/modify/6567d60e9fbd027bb1d9d722"],
+        mockStore,
+      );
+
+      const submitButton = await screen.findByRole("button", {
+        name: submitLabel,
+      });
+
+      await user.click(submitButton);
+
+      const actualToastMessage = screen.getByText(expectedErrorMessage);
+
+      expect(actualToastMessage).toBeVisible();
     });
   });
 });

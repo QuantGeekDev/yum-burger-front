@@ -5,12 +5,13 @@ import {
   BurgerStructure,
   MongooseBurgerStructure,
 } from "../../store/features/burgers/types";
+
 interface FormProps {
   buttonText: string;
   onSubmit: (
     event: FormEvent,
     newBurger: MongooseBurgerStructure | BurgerStructure,
-  ) => Promise<void>;
+  ) => void;
   className?: string;
   burgerToModify?: MongooseBurgerStructure;
 }

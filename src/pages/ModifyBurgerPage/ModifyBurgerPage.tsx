@@ -9,7 +9,10 @@ import {
   loadBurgerActionCreator,
   modifyBurgerActionCreator,
 } from "../../store/features/burgers/burgersSlice";
-import { MongooseBurgerStructure } from "../../store/features/burgers/types";
+import {
+  BurgerStructure,
+  MongooseBurgerStructure,
+} from "../../store/features/burgers/types";
 
 const ModifyBurgerPage = (): React.ReactElement => {
   const { id: currentBurgerId } = useParams();
@@ -25,14 +28,16 @@ const ModifyBurgerPage = (): React.ReactElement => {
 
   const onSubmit = async (
     currentEvent: FormEvent,
-    newBurger: MongooseBurgerStructure,
+    newBurger: MongooseBurgerStructure | BurgerStructure,
   ) => {
     currentEvent.preventDefault();
 
-    const modifyBurgerAction = modifyBurgerActionCreator(newBurger);
+    const modifyBurgerAction = modifyBurgerActionCreator(
+      newBurger as MongooseBurgerStructure,
+    );
 
     try {
-      await modifyBurger(newBurger);
+      await modifyBurger(newBurger as MongooseBurgerStructure);
       dispatch(modifyBurgerAction);
       toast.success("Burger modified succesfully");
       navigate("/home");

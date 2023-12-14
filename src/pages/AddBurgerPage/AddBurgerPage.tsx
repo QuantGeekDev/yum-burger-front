@@ -23,6 +23,7 @@ const AddBurgerPage = (): React.ReactElement => {
       dispatch(addBurgerAction);
       toast.success("Burger added succesfully");
       navigate("/home");
+      scrollTo(0, 0);
     } catch (error) {
       toast.error("Error adding burger");
     }

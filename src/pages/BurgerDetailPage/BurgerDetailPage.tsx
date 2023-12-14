@@ -67,7 +67,6 @@ const BurgerDetailPage = (): React.ReactElement => {
           <Button
             className="button button--transparent"
             text="Order"
-            ariaLabel="Order"
             actionOnClick={() => {}}
           />
         </div>

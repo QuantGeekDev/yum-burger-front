@@ -41,7 +41,7 @@ describe("Given a BurgersPage component", () => {
     describe("When a user clicks on the 'Delete' button on the Classic Burger card", () => {
       test("Then the Classic Burger should not be in the document and toast message 'Burger delete successfully' is displayed", async () => {
         const user = userEvent.setup();
-        const expectedDeleteButtonText = "Delete Classic Burger";
+        const expectedDeleteButtonText = "Delete";
         const expectedToastMessage = "Burger deleted succesfully";
 
         renderWithProviders(<BurgersPage />);
@@ -75,7 +75,7 @@ describe("Given a BurgersPage component", () => {
           const expectedToastMessage =
             "Error deleting burger, please try again later";
           const classicBurgerName = "Classic Burger";
-          const deleteButtonText = "Delete Classic Burger";
+          const deleteButtonText = "Delete";
           const user = userEvent.setup();
 
           renderWithProviders(<BurgersPage />, mockStore);

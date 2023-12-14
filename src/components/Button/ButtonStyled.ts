@@ -4,7 +4,6 @@ const ButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 48px;
 
   &.button {
     &__icon {

@@ -67,7 +67,6 @@ const ModifyBurgerPage = (): React.ReactElement => {
     <ModifyBurgerPageStyled>
       <h1 className="modify-burger-page__title"> Modify Burger</h1>
       <Form
-        buttonAriaLabel="Modify Burger"
         className="modify-burger-page__form"
         buttonText="Modify Burger"
         onSubmit={onSubmit}

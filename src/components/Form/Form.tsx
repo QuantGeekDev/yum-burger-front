@@ -14,7 +14,6 @@ interface FormProps {
   ) => void;
   className?: string;
   burgerToModify?: MongooseBurgerStructure;
-  buttonAriaLabel: string;
 }
 
 const Form = ({
@@ -22,7 +21,6 @@ const Form = ({
   onSubmit,
   className,
   burgerToModify,
-  buttonAriaLabel,
 }: FormProps): React.ReactElement => {
   const initialBurgerFormState: BurgerStructure = {
     name: "",
@@ -159,7 +157,6 @@ const Form = ({
         text={buttonText}
         actionOnClick={() => {}}
         type="submit"
-        ariaLabel={buttonAriaLabel}
       />
     </FormStyled>
   );

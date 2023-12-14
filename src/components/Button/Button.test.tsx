@@ -15,7 +15,6 @@ describe("Given a Button component with text 'Test' and a mocked actionOnclick",
           text={expectedText}
           actionOnClick={mockedAction}
           className=""
-          ariaLabel={expectedRoleName}
           iconUrl="./icons/deleteIcon.webp"
         />,
       );
@@ -37,7 +36,6 @@ describe("Given a Button component with text 'Test' and a mocked actionOnclick",
           text={expectedText}
           actionOnClick={mockedAction}
           className=""
-          ariaLabel={expectedRoleName}
           iconUrl="./icons/deleteIcon.webp"
         />,
       );

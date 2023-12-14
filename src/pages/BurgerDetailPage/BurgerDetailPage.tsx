@@ -47,18 +47,18 @@ const BurgerDetailPage = (): React.ReactElement => {
 
       <div className="burger-detail__info">
         <div className="burger-detail__badges">
-          {hasGluten ? (
+          {!hasGluten ? (
             <img
               className="badges__hasGluten"
               alt="badge indicating that food has gluten"
-              src="https://i.ibb.co/7nVs3j5/gluten-Free.webp"
+              src="https://res.cloudinary.com/derffxqir/image/upload/w_40,h_40,c_fill,f_auto,q_auto/ijkh6n4uvhplg7xb3oa7"
             />
           ) : null}
 
           {isVegan ? (
             <img
               className="badges__isVegan"
-              src="https://i.ibb.co/HrNWNGw/vegan.webp"
+              src="https://res.cloudinary.com/derffxqir/image/upload/w_40,h_40,c_fill,f_auto,q_auto/owqqrgwjoz2ganxypj6w"
               alt="badge indicating that food is vegan"
             />
           ) : null}

@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../store/hooks";
 import { toast } from "react-toastify";
 import { deleteBurgerActionCreator } from "../../store/features/burgers/burgersSlice";
 import useBurgersApi from "../../hooks/useBurgerApi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 interface BurgerCardProps {
   burger: MongooseBurgerStructure;
 }
@@ -16,8 +16,6 @@ const BurgerCard = ({
   const dispatch = useAppDispatch();
   const deleteBurgerAction = deleteBurgerActionCreator(_id);
   const dispatchDelete = () => dispatch(deleteBurgerAction);
-
-  const navigate = useNavigate();
 
   const deleteBurger = async () => {
     try {
@@ -49,17 +47,15 @@ const BurgerCard = ({
       <Button
         className="burger__delete-button button--transparent"
         text="Delete"
-        ariaLabel={`Delete ${name}`}
         actionOnClick={() => deleteBurger()}
       />
-      <Button
-        className="burger__modify-button button--transparent"
-        text="Modify"
-        ariaLabel={`Modify ${name}`}
-        actionOnClick={() => {
-          navigate(`/burgers/modify/${_id}`);
-        }}
-      />
+      <Link to={`/burgers/modify/${_id}`}>
+        <Button
+          className="burger__modify-button button--transparent"
+          text="Modify"
+          actionOnClick={() => {}}
+        />
+      </Link>
     </BurgerCardStyled>
   );
 };

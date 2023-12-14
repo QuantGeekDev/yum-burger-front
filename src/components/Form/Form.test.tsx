@@ -9,7 +9,7 @@ describe("Given a Form component", () => {
       const nameLabel = "Name";
 
       const { getByRole } = smartRenderWithProviders(
-        <Form buttonText="" onSubmit={() => {}} buttonAriaLabel="" />,
+        <Form buttonText="" onSubmit={() => {}} />,
       );
 
       const actualNameLabel = getByRole("textbox", { name: nameLabel });
@@ -25,11 +25,7 @@ describe("Given a Form component", () => {
       const user = userEvent.setup();
 
       const { getByRole } = smartRenderWithProviders(
-        <Form
-          buttonText={submitButtonText}
-          onSubmit={() => onSubmit()}
-          buttonAriaLabel={submitButtonText}
-        />,
+        <Form buttonText={submitButtonText} onSubmit={() => onSubmit()} />,
       );
 
       const submitButton = getByRole("button", { name: submitButtonText });
@@ -45,7 +41,7 @@ describe("Given a Form component", () => {
       const user = userEvent.setup();
 
       const { getByRole } = smartRenderWithProviders(
-        <Form buttonText="submit" onSubmit={() => {}} buttonAriaLabel="" />,
+        <Form buttonText="submit" onSubmit={() => {}} />,
       );
 
       const nameInput = getByRole("textbox", { name: nameInputLabel });
@@ -62,7 +58,7 @@ describe("Given a Form component", () => {
       const user = userEvent.setup();
 
       const { getByRole } = smartRenderWithProviders(
-        <Form buttonText="submit" onSubmit={() => {}} buttonAriaLabel="" />,
+        <Form buttonText="submit" onSubmit={() => {}} />,
       );
 
       const hasGlutenInput = getByRole("checkbox", {

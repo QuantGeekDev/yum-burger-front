@@ -31,7 +31,11 @@ const AddBurgerPage = (): React.ReactElement => {
   return (
     <AddBurgerPageStyled className="add-burger-page">
       <h1 className="add-burger-page__title">Add Burger</h1>
-      <Form buttonText="Add Burger" onSubmit={onSubmit} />
+      <Form
+        buttonText="Add Burger"
+        onSubmit={onSubmit}
+        buttonAriaLabel="Add Burger"
+      />
     </AddBurgerPageStyled>
   );
 };

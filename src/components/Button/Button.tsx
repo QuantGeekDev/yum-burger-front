@@ -7,6 +7,7 @@ interface ButtonProps {
   iconUrl?: string;
   type?: "button" | "submit";
   altText?: string;
+  ariaLabel: string;
 }
 const Button = ({
   className,
@@ -15,12 +16,14 @@ const Button = ({
   iconUrl,
   type = "button",
   altText = "",
+  ariaLabel,
 }: ButtonProps): React.ReactElement => {
   return (
     <ButtonStyled
       className={`button ${className}`}
       onClick={actionOnClick}
       type={type}
+      aria-label={ariaLabel}
     >
       {iconUrl && (
         <img

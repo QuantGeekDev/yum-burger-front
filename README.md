@@ -2,6 +2,19 @@
 
 Nyam Burger is a front-end application that serves as a CRUD (Create, Read, Update, Delete) interface for managing hamburgers. The application features a Burger List with burger cards, a detailed page for each burger, and functionalities to edit, delete, and add new burgers.
 
+
+## Quality and Coverage
+
+- **Quality Gate Status**:
+  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn)
+
+- **Coverage**:
+  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn&metric=coverage)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn)
+
+- **Maintainability Rating**:
+  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn)
+
+
 ## Getting Started
 
 To get started with Nyam Burger, follow these steps:
@@ -41,17 +54,6 @@ This will start the development server, and you can access the application. Make
 - **test**: Run tests using Vitest.
 - **test:dev**: Run tests in watch mode.
 - **test:coverage**: Run tests with coverage reporting.
-
-## Quality and Coverage
-
-- **Quality Gate Status**:
-  [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn)
-
-- **Coverage**:
-  [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn&metric=coverage)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn)
-
-- **Maintainability Rating**:
-  [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=isdi-coders-2023_Alex-Andrushevich-Final-Project-front-202309-bcn)
 
 ## License
 

@@ -57,6 +57,7 @@ describe("Given a BurgersPage component", () => {
         });
 
         expect(actualClassicBurger).toBeVisible();
+
         await user.click(deleteButtonForClassicBurger);
 
         await waitFor(async () => {
@@ -74,6 +75,7 @@ describe("Given a BurgersPage component", () => {
 
           const expectedToastMessage =
             "Error deleting burger, please try again later";
+
           const classicBurgerName = "Classic Burger";
           const deleteButtonText = "Delete";
           const user = userEvent.setup();

@@ -132,7 +132,7 @@ const Form = ({
         </div>
 
         <div className="form-controls__hasGluten">
-          <label htmlFor="hasGluten">Has Gluten Free option?</label>
+          <label htmlFor="hasGluten">Has Gluten?</label>
           <input
             id="hasGluten"
             type="checkbox"

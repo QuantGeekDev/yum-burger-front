@@ -54,7 +54,7 @@ describe("Given a Form component", () => {
 
   describe("When the user checks the checkbox for the 'hasGluten'  input", () => {
     test("Then the 'hasGluten' input is checked", async () => {
-      const hasGlutenInputLabel = "Has Gluten Free option?";
+      const hasGlutenInputLabel = "Has Gluten?";
       const user = userEvent.setup();
 
       const { getByRole } = smartRenderWithProviders(

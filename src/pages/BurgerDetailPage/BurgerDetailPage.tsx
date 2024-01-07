@@ -47,7 +47,7 @@ const BurgerDetailPage = (): React.ReactElement => {
 
       <div className="burger-detail__info">
         <div className="burger-detail__badges">
-          {!hasGluten ? (
+          {hasGluten ? (
             <img
               className="badges__hasGluten"
               alt="badge indicating that food has gluten"

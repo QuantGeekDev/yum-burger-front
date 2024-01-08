@@ -108,7 +108,9 @@ const Form = ({
               type="number"
               defaultValue={price}
               onChange={onChange}
-              step=".01"
+              step=".1"
+              min="0"
+              max="1000"
               required
               aria-required="true"
             />

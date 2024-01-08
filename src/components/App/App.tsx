@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import AddBurgerPage from "../../pages/AddBurgerPage/AddBurgerPage";
 import BurgerDetailPage from "../../pages/BurgerDetailPage/BurgerDetailPage";
 import ModifyBurgerPage from "../../pages/ModifyBurgerPage/ModifyBurgerPage";
+import NotFoundPage from "../../pages/NotFoundPage/NotFoundPage";
 
 const App = (): React.ReactElement => {
   return (
@@ -20,7 +21,7 @@ const App = (): React.ReactElement => {
         <Route path="/burgers/add" element={<AddBurgerPage />} />
         <Route path="/burgers/:id" element={<BurgerDetailPage />} />
         <Route path="/burgers/modify/:id" element={<ModifyBurgerPage />} />
-        <Route path="*" element={<h1> 404 Page Not Found </h1>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </AppStyled>
   );
